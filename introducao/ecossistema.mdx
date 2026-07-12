@@ -23,10 +23,6 @@ O ecossistema SUOT reúne os recursos que um desenvolvedor precisa para construi
   </Card>
 </CardGroup>
 
-<Note>
-  O **admin.suot.dev** é o backoffice interno da SUOT e não faz parte da jornada do desenvolvedor. Ele não está documentado aqui e não é acessível a clientes ou parceiros.
-</Note>
-
 ## Dois SDKs independentes
 
 A SUOT oferece dois SDKs com escopos completamente separados. Não existe um pacote agregador que instale ambos — você declara apenas as dependências que a sua aplicação realmente utiliza.
@@ -39,6 +35,8 @@ A SUOT oferece dois SDKs com escopos completamente separados. Não existe um pac
 Você pode instalar somente o Fiscal SDK, somente o ANTT SDK ou ambos no mesmo projeto. Eles compartilham a mesma convenção de Command / Handler / Result e a mesma filosofia de tipagem, mas as dependências são inteiramente distintas.
 
 **Requisitos do Fiscal SDK:** PHP 8.4+ e Composer 2. O Laravel Bridge (`suot/fiscal-laravel`) é opcional.
+
+**Requisitos do ANTT SDK:** PHP 8.4+ e Composer 2. O Laravel Bridge (`suot/antt-laravel`) é opcional.
 
 ## Sua aplicação coordena
 

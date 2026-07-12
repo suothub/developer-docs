@@ -104,6 +104,14 @@ Vocabulário do ecossistema fiscal e regulatório brasileiro aplicável ao trans
 **Agência Nacional de Transportes Terrestres** — autarquia federal responsável pela regulação do transporte rodoviário de cargas e passageiros no Brasil. Administra cadastros como o RNTRC e sistemas como o CIOT. O SUOT ANTT SDK fornece integração direta com os serviços da ANTT.
 </Accordion>
 
+<Accordion title="autorizações de passageiros">
+**Autorizações regulatórias para o transporte rodoviário de passageiros** emitidas pela ANTT. Abrangem habilitações, permissões e autorizações para operar linhas interestaduais e internacionais. O suporte a esse conjunto de operações está previsto no roadmap do SUOT ANTT SDK.
+
+<Info>
+O suporte a autorizações de passageiros está previsto no roadmap. Consulte o [Developer Portal](https://developers.suot.dev) para acompanhar o status.
+</Info>
+</Accordion>
+
 <Accordion title="BP-e">
 **Bilhete de Passagem Eletrônico** — documento fiscal eletrônico destinado ao transporte de passageiros. Faz parte do roadmap do SUOT Fiscal SDK.
 
@@ -116,6 +124,14 @@ O suporte ao BP-e está previsto no roadmap. Consulte o [Developer Portal](https
 **Código Identificador de Operação de Transporte** — código obrigatório para operações de frete acima de determinado valor, emitido junto à ANTT. O CIOT identifica cada operação de transporte rodoviário de cargas e deve acompanhar o pagamento ao transportador. O SUOT ANTT SDK oferece geração e consulta de CIOT.
 </Accordion>
 
+<Accordion title="cStat">
+**Código de status** presente na resposta do SEFAZ ou da ANTT. Identifica de forma padronizada o resultado de uma operação: autorização (ex: `100`), rejeição (ex: `2xx`, `3xx`, `4xx`, `5xx`) ou outros estados. Sempre inspecione o `cStat` do `Result` antes de tomar decisões de negócio.
+
+```php
+$cStat = $result->cStat(); // ex: "100"
+```
+</Accordion>
+
 <Accordion title="CT-e">
 **Conhecimento de Transporte Eletrônico** — documento fiscal eletrônico **obrigatório** para toda operação de transporte de cargas no Brasil. Substitui os antigos documentos em papel (Conhecimento de Transporte Rodoviário, Aéreo, etc.). Autorizado pelo SEFAZ estadual competente. É o principal documento suportado pelo SUOT Fiscal SDK.
 </Accordion>
@@ -126,14 +142,6 @@ O suporte ao BP-e está previsto no roadmap. Consulte o [Developer Portal](https
 <Info>
 O CT-e OS está em desenvolvimento. Verifique o roadmap no [Developer Portal](https://developers.suot.dev).
 </Info>
-</Accordion>
-
-<Accordion title="cStat">
-**Código de status** presente na resposta do SEFAZ ou da ANTT. Identifica de forma padronizada o resultado de uma operação: autorização (ex: `100`), rejeição (ex: `2xx`, `3xx`, `4xx`, `5xx`) ou outros estados. Sempre inspecione o `cStat` do `Result` antes de tomar decisões de negócio.
-
-```php
-$cStat = $result->cStat(); // ex: "100"
-```
 </Accordion>
 
 <Accordion title="DFe">
@@ -168,6 +176,14 @@ O suporte ao PEF está em desenvolvimento. Verifique o roadmap no [Developer Por
 </Info>
 </Accordion>
 
+<Accordion title="piso mínimo">
+**Piso mínimo de frete** — valor mínimo a ser pago pelo serviço de transporte rodoviário de cargas, estabelecido pela ANTT com base em tabelas por tipo de carga e distância. O SUOT ANTT SDK prevê suporte à consulta das tabelas de piso mínimo vigentes no seu roadmap.
+
+<Info>
+O suporte à consulta de piso mínimo está previsto no roadmap. Verifique o [Developer Portal](https://developers.suot.dev) para acompanhar o status.
+</Info>
+</Accordion>
+
 <Accordion title="Protocolo">
 **Número de protocolo de autorização** emitido pelo SEFAZ ao autorizar um DFe. O protocolo deve ser impresso no DACTE (para CT-e), DAMDFE (para MDF-e) ou equivalente, e é a prova legal de que o documento foi autorizado. Disponível no `Result` após uma operação bem-sucedida.
 
@@ -190,6 +206,14 @@ $protocolo = $result->protocolo(); // ex: "135240000012345"
 
 <Accordion title="SVC-AN / SVC-RS">
 **Sistemas de Contingência do SEFAZ** (SEFAZ Virtual de Contingência) — infraestruturas alternativas utilizadas quando a SEFAZ autorizadora primária está indisponível. O SUOT Fiscal SDK suporta contingência via SVC-AN (SEFAZ Virtual do Ambiente Nacional) e SVC-RS (SEFAZ Virtual do Rio Grande do Sul) conforme as regras vigentes.
+</Accordion>
+
+<Accordion title="vale-pedágio">
+**Vale-pedágio obrigatório** — benefício pago pelo embarcador ou contratante ao transportador para custeio das despesas com pedágios durante a execução do transporte, conforme legislação federal. O SUOT ANTT SDK prevê suporte a operações relacionadas ao vale-pedágio no seu roadmap.
+
+<Info>
+O suporte ao vale-pedágio está previsto no roadmap. Consulte o [Developer Portal](https://developers.suot.dev) para acompanhar o status.
+</Info>
 </Accordion>
 
 <Accordion title="xMotivo">

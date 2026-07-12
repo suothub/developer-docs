@@ -1,7 +1,7 @@
 ---
-title: Retry Policy no SUOT Fiscal SDK para falhas transitórias
-sidebarTitle: Retry Policy
-description: Configure a Retry Policy do SUOT Fiscal SDK para retentativas automáticas em falhas de infraestrutura como timeouts e erros HTTP 5xx do SEFAZ.
+title: "Retry Policy no SUOT Fiscal SDK para falhas transitórias"
+sidebarTitle: "Retry Policy"
+description: "Configure a RetryPolicy do SUOT Fiscal SDK para retentativas automáticas em falhas de infraestrutura como timeouts e erros HTTP 5xx do SEFAZ."
 ---
 
 A `RetryPolicy` do SUOT Fiscal SDK foi projetada para lidar com **falhas transitórias de infraestrutura** — situações em que a comunicação com a SEFAZ não foi concluída por razões técnicas fora do controle da aplicação. Ela não substitui o tratamento de rejeições de negócio: se a SEFAZ devolveu um `cStat`, o documento foi processado e um retry sem correção dos dados resultará no mesmo código de rejeição.

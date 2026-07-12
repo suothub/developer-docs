@@ -1,7 +1,7 @@
 ---
 title: "Value Objects nos SDKs SUOT — tipagem de campos fiscais"
 sidebarTitle: "Value Objects"
-description: "Os Value Objects dos SDKs SUOT encapsulam campos fiscais e regulatórios com validação imbutida, imutabilidade e autocomplete total em IDEs e agentes de IA."
+description: "Os Value Objects dos SDKs SUOT encapsulam campos fiscais e regulatórios com validação embutida, imutabilidade e autocomplete total em IDEs e agentes de IA."
 ---
 
 Em vez de strings e inteiros soltos, todos os campos de domínio nos SDKs SUOT são representados por **Value Objects** — objetos imutáveis que carregam um valor validado, transmitem o significado exato do campo e são completamente compreensíveis por IDEs, PHPStan e agentes de IA. Se um CNPJ inválido for fornecido, o erro acontece na construção do objeto, não em algum ponto imprevisível durante a execução.
@@ -35,7 +35,7 @@ A tabela abaixo lista os Value Objects presentes nos SDKs SUOT. Consulte a docum
   Value Objects aceitam strings com ou sem formatação (pontos, barras, hífens). A normalização ocorre internamente — você não precisa limpar a string antes de construir o objeto.
 </Info>
 
-## Validação imbutida
+## Validação embutida
 
 A validação acontece no construtor, não em um método `validate()` separado que você precisa lembrar de chamar. Isso significa que um Value Object que existe em memória é, por definição, válido.
 

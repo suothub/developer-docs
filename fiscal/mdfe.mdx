@@ -1,7 +1,7 @@
 ---
-title: "Emitir e encerrar MDF-e com o SUOT Fiscal SDK"
+title: "MDF-e: emissão e encerramento com o SUOT Fiscal SDK"
 sidebarTitle: "MDF-e"
-description: "Gerencie Manifestos Eletrônicos de Documentos Fiscais com o SUOT Fiscal SDK: emissão, encerramento e inclusão de condutor usando Command/Handler/Result."
+description: "Gerencie Manifestos Eletrônicos de Documentos Fiscais com o SUOT Fiscal SDK: emissão, encerramento e inclusão de condutor tipados."
 ---
 
 O **MDF-e (Manifesto Eletrônico de Documentos Fiscais)** agrupa CT-e e NF-e em uma única declaração de carga por viagem no transporte rodoviário, sendo exigido pela SEFAZ para operações interestaduais e de cabotagem. O SUOT Fiscal SDK expõe Commands e Handlers tipados para cada operação do ciclo de vida do MDF-e — emissão, encerramento, inclusão de condutor e cancelamento —, sempre retornando um `Result` estruturado ou lançando `InfrastructureException` em caso de falha técnica. Da ordem ao resultado.

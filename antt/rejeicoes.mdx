@@ -1,7 +1,7 @@
 ---
-title: "Rejeições e erros no SUOT ANTT SDK — diagnóstico e tratamento"
+title: "Rejeições e erros no SUOT ANTT SDK — diagnóstico"
 sidebarTitle: "Rejeições"
-description: "Trate rejeições e falhas técnicas do SUOT ANTT SDK: identifique o tipo de erro, interprete o Result e saiba quando reconstruir o Command ou acionar retry."
+description: "Trate rejeições e falhas técnicas do SUOT ANTT SDK: interprete o Result, identifique o tipo de erro e saiba quando reconstruir o Command."
 ---
 
 O SUOT ANTT SDK separa explicitamente dois tipos de problemas: rejeições esperadas, que são respostas regulatórias da ANTT a dados incorretos ou situações de negócio inválidas, e falhas técnicas, que são impedimentos de infraestrutura que não chegam à ANTT. Entender essa distinção é essencial para construir um tratamento de erros correto e evitar loops de retry desnecessários.

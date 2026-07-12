@@ -96,6 +96,10 @@ Nunca ignore uma rejeição silenciosamente. Sempre registre `cStat` e `xMotivo`
 
 `InfrastructureException` sinaliza que a comunicação com a SEFAZ não foi concluída — o documento **pode ou não ter sido processado**. Antes de qualquer nova tentativa, consulte a situação da NF-e pelo serviço de consulta de chave para evitar duplicidade.
 
+<Warning>
+A `RetryPolicy` destina-se exclusivamente a falhas de infraestrutura (`InfrastructureException`). **Nunca** a utilize para rejeições de negócio (`isRejected()`): se a SEFAZ retornou um `cStat`, o documento foi processado e a mesma tentativa sem correção dos dados produzirá o mesmo código de rejeição indefinidamente.
+</Warning>
+
 Para automatizar retentativas com backoff configurável, use a `RetryPolicy` do SDK:
 
 ```php

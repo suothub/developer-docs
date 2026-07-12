@@ -1,5 +1,5 @@
 ---
-title: "Emitir e autorizar CT-e com o SUOT Fiscal SDK"
+title: "CT-e: emissão e autorização com o SUOT Fiscal SDK"
 sidebarTitle: "CT-e"
 description: "Construa, autorize e consulte Conhecimentos de Transporte Eletrônico usando o SUOT Fiscal SDK com tipagem total e o padrão Command/Handler/Result."
 ---
@@ -165,21 +165,13 @@ Um `EmitirCTeResult` com `isSuccess() === true` expõe:
   Veja a lista completa de códigos de rejeição da SEFAZ e como tratá-los em [Rejeições](/fiscal/rejeicoes), e a anatomia detalhada do `Result` em [Resultados](/fiscal/resultados).
 </Tip>
 
-## Cancelamento e inutilização
+## Cancelamento e inutilização <Badge>Em desenvolvimento</Badge>
 
-O cancelamento e a inutilização de faixas de numeração são operações separadas do fluxo de emissão, com seus próprios Commands e Handlers.
+O cancelamento e a inutilização de faixas de numeração são operações separadas do fluxo de emissão, com seus próprios Commands e Handlers. `CancelarCTeCommand` e `InutilizarCTeCommand` estarão disponíveis em versão próxima. Acompanhe as [notas de atualização](/suporte/atualizacoes).
 
-<Info>
-  **Em desenvolvimento** — `CancelarCTeCommand` e `InutilizarCTeCommand` estarão disponíveis em versão próxima. Acompanhe as [notas de atualização](/suporte/atualizacoes).
-</Info>
+## Consulta de CT-e <Badge>Em desenvolvimento</Badge>
 
-## Consulta de CT-e
-
-Para consultar a situação de um CT-e já emitido junto à SEFAZ, utilize `ConsultarCTeCommand` com a `ChaveCTe` do documento.
-
-<Info>
-  **Em desenvolvimento** — `ConsultarCTeHandler` estará disponível em breve. A consulta retornará um `ConsultarCTeResult` com situação, protocolo e XML mais recente.
-</Info>
+Para consultar a situação de um CT-e já emitido junto à SEFAZ, utilize `ConsultarCTeCommand` com a `ChaveCTe` do documento. `ConsultarCTeHandler` estará disponível em breve e retornará um `ConsultarCTeResult` com situação, protocolo e XML mais recente.
 
 ## Próximos passos
 

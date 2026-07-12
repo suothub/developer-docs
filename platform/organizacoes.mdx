@@ -1,14 +1,14 @@
 ---
-title: "Organizações no SUOT Developer Portal"
+title: "Organizações — gerenciamento no SUOT Developer Platform"
 sidebarTitle: "Organizações"
-description: "Gerencie sua organização no Developer Portal da SUOT: crie uma org, adicione membros e associe licenças para liberar o acesso aos SDKs."
+description: "Gerencie sua organização no SUOT Developer Platform: crie uma org, adicione membros e associe licenças para liberar o acesso aos SDKs."
 ---
 
 No modelo da SUOT, toda relação comercial e técnica é ancorada em uma **organização**. É a organização — e não o desenvolvedor individual — que detém a licença, recebe acesso ao registry Composer privado e é responsável pelos tokens emitidos aos seus membros. Entender o papel da organização é o primeiro passo para configurar o ambiente de desenvolvimento corretamente.
 
 ## O que é uma organização
 
-Uma organização no Developer Portal da SUOT representa a empresa ou time que vai consumir os SDKs. Ela é a unidade de licenciamento: quando uma licença do Fiscal SDK ou do ANTT SDK é adquirida, ela é vinculada à organização, não a um desenvolvedor específico.
+Uma organização no SUOT Developer Platform representa a empresa ou time que vai consumir os SDKs. Ela é a unidade de licenciamento: quando uma licença do Fiscal SDK ou do ANTT SDK é adquirida, ela é vinculada à organização, não a um desenvolvedor específico.
 
 A partir da organização você pode:
 
@@ -20,7 +20,7 @@ A partir da organização você pode:
 ## Criar uma organização
 
 <Steps>
-  <Step title="Acesse o Developer Portal">
+  <Step title="Acesse o Developer Platform">
     Acesse [developers.suot.dev](https://developers.suot.dev) e faça login com sua conta. Se ainda não tiver uma conta, crie uma diretamente no portal.
   </Step>
   <Step title="Crie uma nova organização">
@@ -39,7 +39,7 @@ A partir da organização você pode:
 
 Após criar a organização, você pode adicionar outros desenvolvedores como membros. Cada membro possui:
 
-- Acesso ao Developer Portal no contexto daquela organização
+- Acesso ao SUOT Developer Platform no contexto daquela organização
 - Capacidade de emitir tokens Composer próprios, vinculados à licença da organização
 - Um papel (*role*) que determina o nível de permissão dentro do portal
 
@@ -56,7 +56,7 @@ A licença é o que autoriza a organização a baixar pacotes do registry privad
 O fluxo completo é:
 
 1. A organização adquire uma licença (Fiscal SDK, ANTT SDK ou ambos)
-2. A licença é vinculada à organização no Developer Portal
+2. A licença é vinculada à organização no SUOT Developer Platform
 3. Membros da organização emitem tokens Composer
 4. Os tokens autenticam requisições ao `packages.suot.dev` com os privilégios da licença da organização
 

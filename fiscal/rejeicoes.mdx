@@ -33,12 +33,11 @@ A tabela abaixo lista códigos `cStat` frequentes no ciclo de autorização de N
 | `104` | Lote recebido com sucesso | Consultar processamento do lote |
 | `110` | Uso Denegado | Verificar situação fiscal do emitente junto à SEFAZ |
 | `204` | Duplicidade de NF-e | Verificar se a chave já foi emitida; recuperar XML autorizado |
-| `217` | NF-e não consta na base de dados da SEFAZ | Verificar chave e reenviar se necessário |
+| `217` | NF já existe no sistema SEFAZ | Verificar chave e recuperar o XML autorizado já registrado |
 | `225` | Rejeição: Falha no Schema XML | Verificar campos obrigatórios e estrutura do XML |
-| `252` | Rejeição: Código IBGE do Município inválido | Corrigir código IBGE do município do emitente/destinatário |
-| `431` | Rejeição: IE do emitente inválida | Verificar Inscrição Estadual do emitente |
+| `252` | Rejeição: Layout inválido | Corrigir versão ou estrutura do layout conforme MOC vigente |
+| `431` | Rejeição: Emissão em contingência | Verificar modo de emissão e regras de contingência aplicáveis |
 | `539` | Rejeição: CNPJ do emitente inválido | Verificar e corrigir CNPJ do emitente |
-| `591` | Rejeição: IE inválida — destinatário não contribuinte | Ajustar indicador de contribuinte do destinatário |
 | `999` | Rejeição: Erro não catalogado | Analisar `xMotivo` detalhadamente; acionar suporte se persistir |
 
 <Note>
@@ -46,6 +45,10 @@ Os códigos `100`, `101` e `104` indicam sucesso ou processamento intermediário
 </Note>
 
 ## Tratando rejeições
+
+<Warning>
+Nunca ignore uma rejeição silenciosamente. Registrar `cStat` e `xMotivo` em todos os casos é obrigatório — esses valores são o ponto de partida para diagnóstico, auditoria e correção dos dados fiscais.
+</Warning>
 
 Use `isRejected()` para interceptar rejeições e registre sempre `cStat` e `xMotivo` antes de tomar qualquer ação:
 

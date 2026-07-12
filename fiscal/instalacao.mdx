@@ -1,5 +1,5 @@
 ---
-title: "Instalar o SUOT Fiscal SDK no seu projeto PHP"
+title: "Instalar o SUOT Fiscal SDK no projeto PHP com Composer"
 sidebarTitle: "Instalação"
 description: "Adicione o SUOT Fiscal SDK ao seu projeto via Composer: configure o registry privado, instale os pacotes necessários e verifique os requisitos de ambiente."
 ---
@@ -79,7 +79,7 @@ Certifique-se de que o seu ambiente atende aos requisitos abaixo antes de inicia
     O Composer resolverá as dependências e instalará os pacotes a partir do registry `packages.suot.dev`.
 
     <Tip>
-      Em ambientes de produção, prefixe o comando com `--no-dev` e considere fixar versões explícitas (ex.: `suot/fiscal-cte:^1.0`) para garantir builds reproduzíveis. Veja mais sobre versionamento na seção abaixo.
+      Em ambientes de produção, prefixe o comando com `--no-dev` e considere fixar a versão com o operador de compatibilidade (`^`) para garantir builds reproduzíveis. Consulte o painel SUOT para a versão atual disponível na sua licença.
     </Tip>
   </Step>
 
@@ -131,12 +131,16 @@ Exemplo de restrição de versão no `composer.json`:
 ```json composer.json
 {
   "require": {
-    "suot/fiscal-core":   "^1.0",
-    "suot/fiscal-sefaz":  "^1.0",
-    "suot/fiscal-cte":    "^1.0"
+    "suot/fiscal-core":   "^x.y",
+    "suot/fiscal-sefaz":  "^x.y",
+    "suot/fiscal-cte":    "^x.y"
   }
 }
 ```
+
+<Note>
+  Substitua `x.y` pela versão disponível na sua licença. Consulte o painel em [developers.suot.dev](/platform/licencas) para verificar qual versão está liberada para o seu plano.
+</Note>
 
 ## Próximos passos
 
