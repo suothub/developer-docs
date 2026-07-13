@@ -1,0 +1,22 @@
+/* SUOT Developers — brand alignment with design-system tokens.
+ * Signal (#FB0927) is brand accent, not semantic error (#d21f2f).
+ */
+
+:root {
+  --suot-midnight: #001145;
+  --suot-signal: #fb0927;
+  --suot-ink: #111827;
+  --suot-slate: #475569;
+  --suot-mist: #e8edf3;
+  --suot-fog: #f5f7fa;
+  --suot-error: #d21f2f;
+  --suot-success: #0f9f68;
+}
+
+/* Keep wordmark readable in the navbar */
+#navbar img,
+header img[alt*="logo" i],
+nav img {
+  max-height: 28px;
+  width: auto;
+}
