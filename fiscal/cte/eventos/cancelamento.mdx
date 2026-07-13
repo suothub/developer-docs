@@ -1,0 +1,52 @@
+---
+title: "Cancelar CT-e"
+sidebarTitle: "Cancelamento"
+description: "Cancele CT-e autorizado com $cte->cancel(): chave, CNPJ, protocolo e justificativa (≥ 15 caracteres)."
+---
+
+## O quê / quando
+
+CT-e autorizado que precisa ser anulado (evento 110111). Irreversível. Justificativa com no mínimo 15 caracteres. Não cancele após carta de correção quando a regra do autorizador impedir (ex.: cStat 523).
+
+## Fluent
+
+```php
+$result = $cte->cancel()
+    ->forOperation('cancel-1')
+    ->inHomologation()
+    ->accessKey($chave44)
+    ->emitterCnpj($cnpj)
+    ->protocol($nProt)
+    ->justification('Erro de digitação na emissão')
+    ->handle();
+
+if ($result->isRejected()) {
+    $failure = $result->failure();
+}
+```
+
+## Command equivalente
+
+```php
+use Suot\Fiscal\Cte\Application\Command\Cancel\CancelCteCommand;
+
+$command = CancelCteCommand::create()
+    ->forOperation('cancel-1')
+    ->inHomologation()
+    ->accessKey($chave44)
+    ->emitterCnpj($cnpj)
+    ->protocol($nProt)
+    ->justification('Erro de digitação na emissão')
+    ->build();
+
+$result = $cte->handle($command);
+```
+
+## Result
+
+`CancelCteResult` — `isRejected()`, `failure()`, `retryPolicy()`, `protocolNumber` do evento quando registrado.
+
+## Exemplos
+
+- `examples/cte/cancel-event.php`
+- `bin/dx/05-cancel.php`

@@ -1,0 +1,71 @@
+---
+title: "Contingência EPEC + SVC"
+sidebarTitle: "Contingência"
+description: "Registre EPEC com $cte->registerEpec() e emita em contingência com issueInContingency()->withEpec()->viaSvc()."
+---
+
+## O quê / quando
+
+Autorizador indisponível: registre o Evento Prévio de Emissão em Contingência (EPEC) e emita via SVC (`SvcRs` ou `SvcSp`), conforme a UF.
+
+## Registrar EPEC isolado
+
+```php
+use Suot\Fiscal\Core\ValueObject\Uf;
+use Suot\Fiscal\Cte\ValueObject\CteEpecPayload;
+use Suot\Fiscal\Cte\ValueObject\CteEpecTaker;
+
+$payload = new CteEpecPayload(
+    justification: 'Indisponibilidade operacional do autorizador em homologacao',
+    icmsValue: '12.00',
+    totalValue: '100.00',
+    cargoValue: '1000.00',
+    taker: new CteEpecTaker(
+        role: '0',
+        uf: 'RS',
+        document: $cnpjTomador,
+        ie: $ieTomador,
+    ),
+    originUf: 'RS',
+    destinationUf: 'SP',
+);
+
+$epecResult = $cte->registerEpec()
+    ->forOperation('epec-1')
+    ->inHomologation()
+    ->issuerUf(new Uf('RS'))
+    ->accessKey($chave44)
+    ->emitterCnpj($cnpj)
+    ->epec($payload)
+    ->handle();
+```
+
+## Emissão em contingência (EPEC + SVC)
+
+Monte um `IssueCteCommand` normal e orquestre:
+
+```php
+use Suot\Fiscal\Cte\ValueObject\CteEmissionType;
+
+$issueCommand = /* IssueCteCommand::create()…->build() */;
+
+$result = $cte->issueInContingency()
+    ->issue($issueCommand)
+    ->withEpec($payload)
+    ->viaSvc(CteEmissionType::SvcRs) // ou SvcSp
+    ->handle();
+
+// $result->isAuthorized(), epecResult, issueResult
+```
+
+Também é válido `$cte->issueInContingency()->issue($cmd)->viaSvc(CteEmissionType::SvcSp)->handle()` quando o fluxo de SVC não embute o EPEC no mesmo Command (conforme seu caso).
+
+## Command equivalente
+
+`RegisterEpecCteCommand::create()…->build()` e `IssueCteInContingencyCommand` via drafts/`$cte->handle()`.
+
+## Exemplos
+
+- `examples/cte/register-epec.php`
+- `examples/cte/issue-in-contingency.php`
+- `examples/cte/issue-in-contingency-svc.php`

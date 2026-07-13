@@ -1,0 +1,48 @@
+---
+title: "Avaliar o SDK sem conta"
+sidebarTitle: "Avaliar"
+description: "Leia a documentação e rode a trilha bin/dx 01–10 sem licença. Conta e token entram só na instalação via Composer."
+---
+
+Ler esta documentação **não exige licença**. Conta, assinatura e token Composer entram quando você for **instalar** pacotes a partir de `packages.suot.dev`.
+
+<Note>
+Os scripts `bin/dx` no repositório do SDK usam stubs (sem SEFAZ). O código que você escreve é o mesmo do dia a dia — só a infraestrutura muda.
+</Note>
+
+## Modelo mental
+
+```text
+Montar intenção  →  handle()  →  Result
+($cte->… ou *Command/*Query)     isAuthorized / isRejected / failure / retryPolicy
+```
+
+O **host** persiste, enfileira, faz retry e decide idempotência. O SDK devolve artefatos e orientação — não grava banco, não agenda fila, não reenvia sozinho.
+
+## Trilha `bin/dx` (01–10)
+
+| Script | O que treina |
+|---|---|
+| `01-service-status.php` | `$cte->serviceStatus()` — pré-voo do autorizador |
+| `02-issue.php` | `$cte->issue()` / `IssueCteCommand` — emissão (stub rejeita de propósito) |
+| `03-download-proc.php` | `$cte->downloadProc()` — XML protocolado (`procCTe`) |
+| `04-proof-of-delivery.php` | `$cte->proofOfDelivery()` — evento 110180 |
+| `05-cancel.php` | `$cte->cancel()` — evento 110111 |
+| `06-rejection-and-revise.php` | `failure()`, `retryPolicy()`, `revise()` |
+| `07-distribute-dfe.php` | `$cte->distributeDfe()` — NSU e chave |
+| `08-command-query-equivalent.php` | Paridade client ≡ Query + Handler |
+| `09-validate-issuer-setup.php` | `$cte->validate()` — pré-persistência sem SEFAZ |
+| `10-persist-what-matters.php` | Campos do Result que o host deve gravar |
+
+Caminho no monorepo: `fiscal-sdk-php/bin/dx/`.
+
+## Depois de avaliar
+
+<CardGroup cols={2}>
+  <Card title="API pública" icon="book-open" href="/fiscal/api-publica">
+    Dois entry points e o que é @internal.
+  </Card>
+  <Card title="Instalar" icon="download" href="/fiscal/instalacao">
+    Registry, token e `composer require` (aí sim precisa de licença).
+  </Card>
+</CardGroup>

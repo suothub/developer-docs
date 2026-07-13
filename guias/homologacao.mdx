@@ -138,18 +138,24 @@ Use o checklist abaixo como guia mínimo antes de liberar sua integração para 
 
   ```php
   use PHPUnit\Framework\TestCase;
-  use Suot\Fiscal\Cte\Command\EmitirCTeCommand;
-  use Suot\Fiscal\Cte\Handler\EmitirCTeHandler;
+  use Suot\Fiscal\Cte\Application\Command\Issue\IssueCteCommand;
+  use Suot\Fiscal\Cte\Application\Command\Issue\IssueCteHandler;
 
-  final class EmitirCTeTest extends TestCase
+  final class IssueCteHomologationTest extends TestCase
   {
       public function testEmissaoComSucesso(): void
       {
-          $handler = new EmitirCTeHandler(config: $this->homologacaoConfig());
-          $result  = $handler->handle(command: $this->buildCommand());
+          /** @var IssueCteHandler $handler */
+          $handler = $this->issueHandler(); // Handler com adapters de homologação
+          $command = IssueCteCommand::create()
+              ->forOperation('homolog-ot-0001')
+              ->inHomologation()
+              // … mesma cadeia tipada da emissão …
+              ->build();
 
-          $this->assertTrue($result->isAutorizado());
-          $this->assertSame(100, $result->cStat());
+          $result = $handler->handle($command);
+
+          $this->assertTrue($result->isAuthorized());
       }
   }
   ```

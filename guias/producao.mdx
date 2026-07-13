@@ -119,36 +119,37 @@ A SEFAZ e a ANTT retornam um código de status (`cStat`) e uma descrição (`xMo
 ### Padrão recomendado
 
 ```php
-use Suot\Fiscal\Cte\Handler\EmitirCTeHandler;
+use Suot\Fiscal\Cte\Application\Command\Issue\IssueCteCommand;
+use Suot\Fiscal\Cte\Application\Command\Issue\IssueCteHandler;
+use Suot\Fiscal\Cte\Operation\Issue\IssueCteResult;
 use Suot\Fiscal\Core\Exception\InfrastructureException;
-use Suot\Fiscal\Core\Result\EmitirCTeResult;
 use Psr\Log\LoggerInterface;
 
-final class EmitirCTeService
+final class IssueCteService
 {
     public function __construct(
-        private readonly EmitirCTeHandler $handler,
-        private readonly LoggerInterface  $logger,
+        private readonly IssueCteHandler $handler,
+        private readonly LoggerInterface $logger,
     ) {}
 
-    public function emitir(EmitirCTeCommand $command): EmitirCTeResult
+    public function issue(IssueCteCommand $command): IssueCteResult
     {
         try {
-            $result = $this->handler->handle(command: $command);
+            $result = $this->handler->handle($command);
 
-            if (! $result->isAutorizado()) {
+            if ($result->isRejected()) {
+                $failure = $result->failure();
                 $this->logger->warning('CT-e rejeitado', [
-                    'cStat'   => $result->cStat(),
-                    'xMotivo' => $result->xMotivo(),
-                    'chave'   => $command->chave()->value(),
+                    'code'        => $failure?->code,
+                    'operationId' => $command->operationId,
                 ]);
             }
 
             return $result;
         } catch (InfrastructureException $e) {
             $this->logger->critical('Falha de infraestrutura SEFAZ', [
-                'message' => $e->getMessage(),
-                'chave'   => $command->chave()->value(),
+                'message'     => $e->getMessage(),
+                'operationId' => $command->operationId,
             ]);
 
             throw $e;

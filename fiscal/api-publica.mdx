@@ -1,0 +1,64 @@
+---
+title: "API pública do Fiscal SDK"
+sidebarTitle: "API pública"
+description: "Dois pontos de entrada equivalentes para CT-e: client $cte->…->handle() e Command/Query::create()…->build() + Handler. O que é @internal."
+---
+
+A superfície pública do CT-e tem **dois caminhos equivalentes**. Ambos montam a mesma intenção fiscal e terminam no mesmo `Handler` → `Result`.
+
+## Dois pontos de entrada
+
+<CardGroup cols={2}>
+  <Card title="A — Client Cte" icon="terminal">
+    `$cte->issue()…->handle()`, `$cte->cancel()…`, `$cte->serviceStatus()…`, etc.
+  </Card>
+  <Card title="B — Command/Query + Handler" icon="boxes">
+    `IssueCteCommand::create()…->build()` (ou `*Query::create()`) e depois `Handler::handle()` ou `$cte->handle($command)`.
+  </Card>
+</CardGroup>
+
+```php
+use Suot\Fiscal\Cte\Application\Cte;
+use Suot\Fiscal\Cte\Application\Command\Issue\IssueCteCommand;
+use Suot\Fiscal\Core\ValueObject\Uf;
+
+// A — fluent no client
+$result = $cte->serviceStatus()
+    ->forOperation('status-1')
+    ->inHomologation()
+    ->issuerUf(new Uf('RS'))
+    ->handle();
+
+// B — Query explícita + despacho
+$query = \Suot\Fiscal\Cte\Application\Query\ServiceStatus\GetCteServiceStatusQuery::create()
+    ->forOperation('status-1')
+    ->inHomologation()
+    ->issuerUf(new Uf('RS'))
+    ->build();
+
+$result = $cte->handle($query);
+// ou: $serviceStatusHandler->handle($query);
+```
+
+Namespace do client: `Suot\Fiscal\Cte\Application\Cte`.
+
+## O que é @internal
+
+Não use na aplicação hospedeira:
+
+| Evitar | Motivo |
+|---|---|
+| `Operation/*Service`, `*Input`, `*::execute()` | Pipeline fiscal interno |
+| `*InputMapper`, `IssueCteCommandBuilder`, `IssueCteCommandParts` | Wiring atrás do Handler |
+| `CTeBuilder`, `EmitirCTe*`, `AutorizarNFe*`, `AutorizarCte*` | Não existem na API pública |
+| `CteClient` como entry point principal | O entry point é `Cte` |
+
+<Warning>
+Rejeição fiscal válida volta como `Result` (`isRejected()`, `failure()`), não como exception. Exceptions são para infraestrutura, argumentos inválidos e estados impossíveis.
+</Warning>
+
+## Próximos passos
+
+- [Avaliar sem conta](/fiscal/avaliar) — trilha `bin/dx`
+- [CT-e](/fiscal/cte) — jornada do documento
+- [Instalação](/fiscal/instalacao) — Composer + registry

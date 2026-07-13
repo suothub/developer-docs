@@ -1,33 +1,68 @@
-> **First-time setup**: Customize this file for your project. Prompt the user to customize this file for their project.
-> For Mintlify product knowledge (components, configuration, writing standards),
-> install the Mintlify skill: `npx skills add https://mintlify.com/docs`
+---
+# AGENTS.md — developer-docs (Mintlify)
 
-# Documentation project instructions
+Instruções para agentes e autores que escrevem documentação neste repositório.
 
-## About this project
+## Sobre o projeto
 
-- This is a documentation site built on [Mintlify](https://mintlify.com)
-- Pages are MDX files with YAML frontmatter
-- Configuration lives in `docs.json`
-- Use the Mintlify MCP server, `https://mcp.mintlify.com`, to edit content and settings via MCP
-- Use the Mintlify docs MCP server, `https://www.mintlify.com/docs/mcp`, to query information about using Mintlify via MCP
+- Site Mintlify (`docs.json` + páginas MDX)
+- Idioma: **pt-BR**
+- Títulos em **sentence case**
+- Frontmatter mínimo: `title`, `sidebarTitle`, `description`
+- Componentes Mintlify quando úteis: `Steps`, `Note`, `Warning`, `Tip`, `Card`, `CardGroup`, `CodeGroup`
 
-## Terminology
+## Escopo Fiscal SDK (CT-e)
 
-{/* Add product-specific terms and preferred usage */}
-{/* Example: Use "workspace" not "project", "member" not "user" */}
+### API pública (obrigatório)
 
-## Style preferences
+Documente **somente**:
 
-{/* Add any project-specific style rules below */}
+1. `$cte->…->handle()` — client `Suot\Fiscal\Cte\Application\Cte`
+2. `*Command::create()…->build()` / `*Query::create()…->build()` + `Handler::handle()` ou `$cte->handle($cmd)`
 
-- Use active voice and second person ("you")
-- Keep sentences concise — one idea per sentence
-- Use sentence case for headings
-- Bold for UI elements: Click **Settings**
-- Code formatting for file names, commands, paths, and code references
+### Nunca documentar como API do consumidor
 
-## Content boundaries
+- `CTeBuilder`, `EmitirCTe*`, `AutorizarNFe*`, `AutorizarCte*`
+- `Operation/*` como entry point (`*Input`, `*::execute()`, `*Service`)
+- `*InputMapper`, `IssueCteCommandBuilder`, `IssueCteCommandParts`
+- `CteClient` como porta principal
 
-{/* Define what should and shouldn't be documented */}
-{/* Example: Don't document internal admin features */}
+### Namespaces
+
+- Application: `Suot\Fiscal\Cte\Application\…`
+- Data / VO CT-e: `Suot\Fiscal\Cte\Data\…`, `Suot\Fiscal\Cte\ValueObject\…`
+- Core VO: `Suot\Fiscal\Core\ValueObject\…`
+- Results: `Suot\Fiscal\Cte\Operation\…\*Result` (retorno público; pasta `Operation` de **serviços** continua interna)
+
+### Pacotes Composer
+
+Use `usesuot/fiscal-core`, `usesuot/fiscal-sefaz`, `usesuot/fiscal-cte`, `usesuot/fiscal-laravel` — não `suot/fiscal-*` inventado.
+
+### Licença e prontidão
+
+- Ler docs **não** exige licença; `composer require` no registry **exige**
+- Não declare production-ready sem caveat (schemas, fixtures, ciclo de vida, homologação)
+- Vencimento de update ≠ kill switch no runtime instalado
+
+### Página de capacidade (padrão)
+
+1. O quê / quando  
+2. Exemplo fluent  
+3. Equivalente Command/Query (breve)  
+4. Como ler o Result  
+5. Link para `examples/cte/…` ou `bin/dx/…`
+
+### Fonte de verdade do código
+
+Antes de inventar método ou parâmetro, leia o código em `../fiscal-sdk-php/packages/cte/src/Application/` e os exemplos em `examples/cte/` / `bin/dx/`.
+
+## Estilo
+
+- Ativo, 2ª pessoa, frases curtas
+- Precisão de código > marketing
+- Signal (`#FB0927`) é marca, não cor de erro — na docs, use `Warning`/`Tip` sem metáfora de cor
+- Sem emoji
+
+## Navegação
+
+Ao criar páginas novas, atualize `docs.json`. Remova stubs órfãos (ex.: `fiscal/cte.mdx` se existir `fiscal/cte/index.mdx`).

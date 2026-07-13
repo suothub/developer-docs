@@ -1,0 +1,41 @@
+---
+title: "Consultar protocolo de autorização"
+sidebarTitle: "Protocolo"
+description: "Obtenha o protocolo de autorização do CT-e com $cte->authorizationProtocol()."
+---
+
+## O quê / quando
+
+Quando você precisa do protocolo (`nProt`) a partir da chave — cancelamento, eventos de entrega, reconciliação.
+
+## Fluent
+
+```php
+$result = $cte->authorizationProtocol()
+    ->forOperation('prot-1')
+    ->inHomologation()
+    ->accessKey($chave44)
+    ->handle();
+```
+
+Resultado: `CteQueryResult` (mesmo tipo da consulta por chave; o método no client é `authorizationProtocol()`).
+
+## Query equivalente
+
+```php
+use Suot\Fiscal\Cte\Application\Query\AuthorizationProtocol\GetCteAuthorizationProtocolQuery;
+
+$query = GetCteAuthorizationProtocolQuery::create()
+    ->forOperation('prot-1')
+    ->inHomologation()
+    ->accessKey($chave44)
+    ->build();
+
+$result = $cte->handle($query);
+```
+
+## Exemplos
+
+Exemplo executável (stub): `examples/cte/query-authorization-protocol.php`.
+
+Handlers/aliases Laravel: `GetCteAuthorizationProtocolHandler` / `fiscal.cte.query.authorization_protocol`.

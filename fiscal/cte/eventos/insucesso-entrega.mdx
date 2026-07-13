@@ -1,0 +1,64 @@
+---
+title: "Insucesso na entrega"
+sidebarTitle: "Insucesso na entrega"
+description: "Registre o evento 110190 com $cte->deliveryFailure() e CteDeliveryFailurePayload + CteDeliveryFailureReason."
+---
+
+## O quê / quando
+
+Tentativa de entrega sem sucesso. Motivo tipado em `CteDeliveryFailureReason`. Se `Other`, informe `reasonJustification` (≥ 15 caracteres).
+
+## Fluent
+
+```php
+use Suot\Fiscal\Cte\ValueObject\CteDeliveryFailurePayload;
+use Suot\Fiscal\Cte\ValueObject\CteDeliveryFailureReason;
+
+$now = (new DateTimeImmutable('now', new DateTimeZone('America/Sao_Paulo')))
+    ->format('Y-m-d\TH:i:sP');
+
+$payload = new CteDeliveryFailurePayload(
+    authorizationProtocol: $nProt,
+    attemptedAt: $now,
+    reason: CteDeliveryFailureReason::ReceiverRefused,
+    // reasonJustification: obrigatório se reason === Other
+    attemptNumber: '001',
+    failedNfeKeys: [],
+);
+
+$result = $cte->deliveryFailure()
+    ->forOperation('ie-1')
+    ->inHomologation()
+    ->accessKey($chave44)
+    ->emitterCnpj($cnpj)
+    ->deliveryFailure($payload)
+    ->handle();
+```
+
+Motivos: `ReceiverNotFound`, `ReceiverRefused`, `AddressNotFound`, `Other`.
+
+## Command equivalente
+
+```php
+use Suot\Fiscal\Cte\Application\Command\DeliveryFailure\RegisterCteDeliveryFailureCommand;
+
+$command = RegisterCteDeliveryFailureCommand::create()
+    ->forOperation('ie-1')
+    ->inHomologation()
+    ->accessKey($chave44)
+    ->emitterCnpj($cnpj)
+    ->deliveryFailure($payload)
+    ->build();
+
+$result = $cte->handle($command);
+```
+
+## Result
+
+`DeliveryFailureCteResult` — `isRejected()`, `failure()`, protocolo do evento.
+
+Exemplo executável (stub): `examples/cte/delivery-failure.php` no repositório do SDK.
+
+<Tip>
+Há também `$cte->cancelDeliveryFailure()` / `CancelCteDeliveryFailureCommand` para cancelar o evento de insucesso quando aplicável.
+</Tip>

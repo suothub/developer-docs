@@ -71,17 +71,47 @@
         "tab": "Fiscal SDK",
         "groups": [
           {
-            "group": "Visão Geral",
+            "group": "Visão geral",
             "pages": [
               "fiscal/visao-geral",
+              "fiscal/avaliar",
+              "fiscal/api-publica",
               "fiscal/instalacao",
               "fiscal/configuracao"
             ]
           },
           {
-            "group": "Documentos",
+            "group": "CT-e",
             "pages": [
-              "fiscal/cte",
+              "fiscal/cte/index",
+              "fiscal/cte/validacao",
+              "fiscal/cte/emissao",
+              "fiscal/cte/resultados",
+              "fiscal/cte/contingencia",
+              {
+                "group": "Consultas",
+                "pages": [
+                  "fiscal/cte/consultas/status-servico",
+                  "fiscal/cte/consultas/por-chave",
+                  "fiscal/cte/consultas/protocolo",
+                  "fiscal/cte/consultas/download-proc",
+                  "fiscal/cte/consultas/distribuicao-dfe"
+                ]
+              },
+              {
+                "group": "Eventos",
+                "pages": [
+                  "fiscal/cte/eventos/cancelamento",
+                  "fiscal/cte/eventos/carta-correcao",
+                  "fiscal/cte/eventos/comprovante-entrega",
+                  "fiscal/cte/eventos/insucesso-entrega"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Outros documentos",
+            "pages": [
               "fiscal/mdfe"
             ]
           },
@@ -93,7 +123,7 @@
             ]
           },
           {
-            "group": "Resultados e Erros",
+            "group": "Resultados e erros",
             "pages": [
               "fiscal/resultados",
               "fiscal/rejeicoes",

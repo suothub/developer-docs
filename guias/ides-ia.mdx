@@ -102,9 +102,9 @@ O Copilot funciona diretamente com PHP tipado sem configuração adicional. Com 
 
 Beneficiam-se especialmente da arquitetura CQRS do SDK. Quando o agente tem acesso ao código do projeto:
 
-- Identifica qual `Command` usar para cada operação (ex.: `EmitirCTeCommand`, `RegistrarCiotCommand`).
-- Infere quais campos são obrigatórios vs. opcionais pelo construtor do Command.
-- Gera o handler correto com base nos tipos de `Result` esperados.
+- Identifica qual `Command` usar para cada operação (ex.: `IssueCteCommand`, `RegistrarCiotCommand`).
+- Infere quais etapas são obrigatórias pela cadeia `IssueCteCommand::create()…->build()`.
+- Gera o handler correto com base nos tipos de `Result` esperados (`IssueCteResult`).
 
 ### Windsurf / Outros agentes LSP-aware
 
@@ -128,36 +128,43 @@ Veja como um ciclo típico de desenvolvimento assistido por IA funciona com o SU
   <Step title="Peça ao agente o Command">
     Solicite ao seu assistente de IA:
 
-    > "Crie um `EmitirCTeCommand` usando named arguments com os campos obrigatórios para um CT-e modal rodoviário."
+    > "Crie um `IssueCteCommand` com `IssueCteCommand::create()…->build()` para um CT-e rodoviário em homologação."
 
-    Como todos os campos do Command têm tipos explícitos e PHPDoc em pt-BR, a IA gera um scaffold correto sem inventar campos ou tipos.
+    Como a cadeia tipada e o PHPDoc em pt-BR guiam cada etapa, a IA gera um scaffold correto sem inventar classes antigas (`EmitirCTe*`, `CTeBuilder`).
 
     ```php
-    // Gerado pelo agente — tipos corretos na primeira tentativa
-    $command = new EmitirCTeCommand(
-        chave:      new Chave(value: '35240100000000000191570010000000011000000015'),
-        emitente:   new Emitente(cnpj: new Cnpj(value: '00000000000191')),
-        tomador:    new Tomador(cnpj: new Cnpj(value: '99999999000199')),
-        modal:      Modal::Rodoviario,
-        natureza:   NaturezaOperacao::PrestacaoServico,
-        valorTotal: new Dinheiro(centavos: 150000),
-    );
+    // Gerado pelo agente — API pública na primeira tentativa
+    use Suot\Fiscal\Cte\Application\Command\Issue\IssueCteCommand;
+    use Suot\Fiscal\Core\ValueObject\Uf;
+
+    $command = IssueCteCommand::create()
+        ->forOperation('ot-000123')
+        ->inHomologation()
+        ->numbered(series: '1', number: '12345')
+        ->issuedIn(new Uf('RS'))
+        ->withOperation(cfop: '5353', nature: 'PRESTACAO DE SERVICO DE TRANSPORTE')
+        // … issuedBy / from / to / forShipper / deliverTo / carrying / charging …
+        ->build();
     ```
   </Step>
   <Step title="Execute o Handler">
     Peça ao agente para completar o fluxo com o handler:
 
-    > "Agora injete o `EmitirCTeHandler` e trate o `Result`."
+    > "Agora injete o `IssueCteHandler` e trate o `IssueCteResult` com `isAuthorized()` / `isRejected()` / `failure()`."
 
     ```php
-    $result = $handler->handle(command: $command);
+    use Suot\Fiscal\Cte\Application\Command\Issue\IssueCteHandler;
 
-    if ($result->isAutorizado()) {
-        $xml   = $result->xmlAutorizado();
-        $chave = $result->chaveAcesso();
-        // armazenar XML, emitir DACTE, etc.
-    } else {
-        // tratar rejeição com cStat e xMotivo
+    /** @var IssueCteHandler $handler */
+    $result = $handler->handle($command);
+
+    if ($result->isAuthorized()) {
+        // host: persistir accessKey, protocolNumber, submittedDocumentXml
+    }
+
+    if ($result->isRejected()) {
+        $failure = $result->failure();
+        // orientar correção / retry com failure() e retryPolicy()
     }
     ```
   </Step>

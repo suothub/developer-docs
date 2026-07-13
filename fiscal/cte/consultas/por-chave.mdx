@@ -1,0 +1,45 @@
+---
+title: "Consultar CT-e por chave"
+sidebarTitle: "Por chave"
+description: "Situação do CT-e na SEFAZ com $cte->byAccessKey() e GetCteByAccessKeyQuery."
+---
+
+## O quê / quando
+
+Depois de timeout ambíguo, processamento ou para reconciliar estado — consulte pela chave de acesso de 44 dígitos.
+
+## Fluent
+
+```php
+$result = $cte->byAccessKey()
+    ->forOperation('query-key-1')
+    ->inHomologation()
+    ->accessKey($chave44)
+    ->handle();
+
+$failure = $result->failure(); // quando não encontrado / rejeição de consulta
+```
+
+Resultado: `CteQueryResult`.
+
+## Query equivalente
+
+```php
+use Suot\Fiscal\Cte\Application\Query\ByAccessKey\GetCteByAccessKeyQuery;
+
+$query = GetCteByAccessKeyQuery::create()
+    ->forOperation('query-key-1')
+    ->inHomologation()
+    ->accessKey($chave44)
+    ->build();
+
+$result = $cte->handle($query);
+```
+
+<Tip>
+Em risco de duplicidade (`RetryMode::QueryBeforeRetry`), consulte **antes** de reenviar a emissão.
+</Tip>
+
+## Exemplos
+
+- `examples/cte/query-by-access-key.php`

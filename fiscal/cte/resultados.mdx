@@ -1,0 +1,63 @@
+---
+title: "Ler o resultado da emissão"
+sidebarTitle: "Resultados"
+description: "IssueCteResult: isAuthorized, isRejected, failure, retryPolicy, revise no Command e campos que o host deve persistir."
+---
+
+## O quê / quando
+
+Toda emissão devolve `Suot\Fiscal\Cte\Operation\Issue\IssueCteResult`. Rejeição fiscal é Result — não exception.
+
+## Interpretar
+
+```php
+if ($result->isAuthorized()) {
+    // persistir chave, protocolo, XML enviado, responseXml, receivedAt
+}
+
+if ($result->isRejected()) {
+    $failure = $result->failure();
+    $policy = $result->retryPolicy();
+    // $failure->code, recoveryGuide, ResolutionStep::relatedField
+    // $policy->mode — Never | Immediate | AfterDelay | AfterCorrection | QueryBeforeRetry
+}
+
+if ($result->isProcessing()) {
+    // consultar antes de reenviar
+}
+```
+
+## Campos a persistir (host)
+
+| Campo | Quando |
+|---|---|
+| `accessKey` | Autorizado (e às vezes rejeição com chave gerada) |
+| `protocolNumber` | Autorizado |
+| `submittedDocumentXml` | XML do CT-e enviado |
+| `responseXml` | Auditoria / protocolo |
+| `receivedAt` | Timestamp de retorno |
+| `metadata.operationId` | Idempotência no host |
+
+O SDK **não** persiste. Ver `bin/dx/10-persist-what-matters.php` e `examples/cte/persist-result-fields.php`.
+
+## Corrigir e reenviar (`revise`)
+
+```php
+if ($result->retryPolicy()?->requiresCorrection()) {
+    $retry = $command
+        ->revise()
+        ->withOperationId('ot-123-issue-retry')
+        ->forShipper($shipperCorrigido)
+        ->build();
+
+    $result = $cte->handle($retry);
+}
+```
+
+`revise()` não muta o Command original. Não reutilize XML assinado antigo após mudar dados fiscais.
+
+## Exemplos
+
+- `examples/cte/actionable-result.php`
+- `bin/dx/06-rejection-and-revise.php`
+- Página transversal: [Resultados](/fiscal/resultados)

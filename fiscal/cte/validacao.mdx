@@ -1,0 +1,61 @@
+---
+title: "Validar dados antes de persistir"
+sidebarTitle: "Validação"
+description: "Use $cte->validate() para CNPJ, UF, IE, RNTRC, certificado, chave, NSU e setup do emitente — sem chamar a SEFAZ."
+---
+
+## O quê / quando
+
+Valide dados **antes** de gravar no host ou emitir. Não há rede SEFAZ: o retorno é `ValidationResult` (`isValid()`, `failure()` quando inválido).
+
+## Fluent
+
+```php
+$result = $cte->validate()->issuerSetup()
+    ->withCnpj('04.252.011/0001-10')
+    ->withStateRegistration('0961234567')
+    ->inUf('RS')
+    ->underRntrc('12345678')
+    ->withPkcs12('/caminho/certificado.pfx')
+    ->protectedBy('senha')
+    ->handle();
+
+if (! $result->isValid()) {
+    $failure = $result->failure();
+    // code, recoveryGuide, relatedField nos steps
+}
+```
+
+Outras portas no mesmo `validate()`:
+
+| Método | Uso |
+|---|---|
+| `cnpj()` | `->withCnpj('…')` |
+| `uf()` | UF do emitente / rota |
+| `stateRegistration()` | Inscrição estadual |
+| `rntrc()` | `->underRntrc('…')` |
+| `certificate()` | `->withPkcs12()` + `->protectedBy()` |
+| `accessKey()` | Chave de acesso CT-e |
+| `nsu()` | NSU de distribuição |
+
+## Command/Query equivalente
+
+```php
+$query = \Suot\Fiscal\Cte\Application\Validate\Cnpj\ValidateCnpjQuery::create()
+    ->withCnpj('04.252.011/0001-10')
+    ->build();
+
+$result = $cte->validate()->handle($query);
+// ou ValidateCnpjHandler::handle($query)
+```
+
+## Result
+
+- `isValid()` — dado aceito para persistência local
+- `normalizedValue` — quando aplicável (ex.: CNPJ só dígitos)
+- `failure()` — orientação acionável (`AfterCorrection` típico)
+
+## Exemplos
+
+- `examples/cte/validate-issuer-setup.php`
+- `bin/dx/09-validate-issuer-setup.php`

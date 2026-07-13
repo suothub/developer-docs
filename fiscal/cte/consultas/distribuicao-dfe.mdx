@@ -1,0 +1,62 @@
+---
+title: "Distribuição DF-e de CT-e"
+sidebarTitle: "Distribuição DF-e"
+description: "Sincronize documentos com $cte->distributeDfe(): fromUltNsu para sync incremental e forAccessKey para localizar por chave."
+---
+
+## O quê / quando
+
+Sincronize DF-e (procCTe e eventos) a partir do autorizador. Persista `ultNSU` / `maxNSU` no host.
+
+## Fluent — por NSU
+
+```php
+use Suot\Fiscal\Core\ValueObject\Uf;
+
+$byNsu = $cte->distributeDfe()
+    ->forOperation('dist-nsu-1')
+    ->inHomologation()
+    ->authorizerUf(new Uf('RS'))
+    ->cnpj($cnpj)
+    ->fromUltNsu('0') // alias: ultNsu()
+    ->handle();
+
+// $byNsu->ultNsu, maxNsu, procDocuments(), eventDocuments()
+```
+
+## Fluent — por chave
+
+```php
+$byKey = $cte->distributeDfe()
+    ->forOperation('dist-key-1')
+    ->inHomologation()
+    ->authorizerUf(new Uf('RS'))
+    ->cnpj($cnpj)
+    ->forAccessKey($chave44)
+    ->handle();
+```
+
+<Note>
+O schema de CT-e não expõe `consChCTe` separado: `forAccessKey` faz varredura por NSU no pipeline interno.
+</Note>
+
+## Query equivalente
+
+```php
+use Suot\Fiscal\Cte\Application\Query\Distribution\DistributeCteDfeQuery;
+
+$query = DistributeCteDfeQuery::create()
+    ->forOperation('dist-nsu-1')
+    ->inHomologation()
+    ->authorizerUf(new Uf('RS'))
+    ->cnpj($cnpj)
+    ->fromUltNsu('0')
+    ->build();
+
+$result = $cte->handle($query);
+```
+
+## Exemplos
+
+- `examples/cte/distribute-dfe.php`
+- `bin/dx/07-distribute-dfe.php`
