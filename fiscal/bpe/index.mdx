@@ -1,0 +1,51 @@
+---
+title: "BP-e — jornada do bilhete"
+sidebarTitle: "Visão geral"
+description: "Mapa da API pública de BP-e (modelo 63): emissão de passagem rodoviária, consultas e cancelamento via $bpe->…->handle()."
+---
+
+O **BP-e** (modelo 63) cobre bilhete de passagem rodoviária. O client público é `Suot\Fiscal\Bpe\Application\Bpe` via `$bpe->…->handle()`.
+
+<Warning>
+Capacidades fiscais só são production-ready após schemas importados, fixtures, ciclo de vida completo e evidência de homologação. O ciclo mínimo (status, emissão, consulta, cancelamento) está implementado, mas a homologação de emissão ainda **não** atingiu `cStat 100` — bloqueio atual `203` (emitente não habilitado para BP-e). Status do serviço homologado com `cStat 107` (2026-07-16).
+</Warning>
+
+## Jornada
+
+<CardGroup cols={2}>
+  <Card title="Emissão" icon="ticket" href="/fiscal/bpe/emissao">
+    `$bpe->issue()…->handle()` — passagem rodoviária, trecho, valores e pagamento.
+  </Card>
+  <Card title="Resultados" icon="circle-check" href="/fiscal/bpe/resultados">
+    `IssueBpeResult`: autorizado, rejeitado, `failure()`, campos a persistir.
+  </Card>
+</CardGroup>
+
+## Consultas
+
+<CardGroup cols={2}>
+  <Card title="Status do serviço" href="/fiscal/bpe/consultas/status-servico" />
+  <Card title="Por chave" href="/fiscal/bpe/consultas/por-chave" />
+</CardGroup>
+
+## Eventos
+
+<CardGroup cols={2}>
+  <Card title="Cancelamento" href="/fiscal/bpe/eventos/cancelamento" />
+</CardGroup>
+
+## Pacote e instalação
+
+```bash
+composer require suot/fiscal-core suot/fiscal-sefaz suot/fiscal-bpe
+```
+
+Vendas, reservas, assentos e embarque ficam no host — o SDK trata apenas o documento fiscal.
+
+## Fora desta onda
+
+BP-e TM (metropolitano) e BP-e TA (aéreo) **não** estão disponíveis nesta onda. Variantes metropolitanas e aéreas ficam para evolução posterior do pacote.
+
+## Próximos passos
+
+Trilha didática: [Avaliar o SDK](/fiscal/avaliar). Fretamento: [CT-e OS](/fiscal/cte-os).

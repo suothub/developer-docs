@@ -131,6 +131,27 @@
             ]
           },
           {
+            "group": "BP-e",
+            "pages": [
+              "fiscal/bpe/index",
+              "fiscal/bpe/emissao",
+              "fiscal/bpe/resultados",
+              {
+                "group": "Consultas",
+                "pages": [
+                  "fiscal/bpe/consultas/status-servico",
+                  "fiscal/bpe/consultas/por-chave"
+                ]
+              },
+              {
+                "group": "Eventos",
+                "pages": [
+                  "fiscal/bpe/eventos/cancelamento"
+                ]
+              }
+            ]
+          },
+          {
             "group": "MDF-e",
             "pages": [
               "fiscal/mdfe/index",

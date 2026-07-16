@@ -154,6 +154,44 @@ Aliases: `fiscal.cte-os`, `fiscal.cte-os.handler.issue`, `fiscal.cte-os.handler.
 
 Diagnóstico: `php artisan fiscal:cte-os:status --uf=TO`.
 
+## Injetar `Bpe`
+
+Mesmo padrão para BP-e (modelo 63). Registro no Laravel Bridge em evolução — monte o client manualmente ou via container customizado até o alias `fiscal.bpe` estar disponível:
+
+```php
+use Suot\Fiscal\Bpe\Application\Bpe;
+use Suot\Fiscal\Core\Exception\InfrastructureException;
+use Suot\Fiscal\Core\Result\RetryMode;
+use Suot\Fiscal\Core\ValueObject\Uf;
+
+final class EmitirBpeAction
+{
+    public function __construct(
+        private readonly Bpe $bpe,
+    ) {}
+
+    public function __invoke(): void
+    {
+        try {
+            $result = $this->bpe
+                ->serviceStatus()
+                ->forOperation('ticket-status')
+                ->inHomologation()
+                ->issuerUf(new Uf('TO'))
+                ->handle();
+        } catch (InfrastructureException $e) {
+            $failure = $e->toFailure('service_status');
+            // Host: alertar; filar retry conforme $failure->retryPolicy
+            throw $e;
+        }
+
+        if ($result->isOperational()) {
+            // Host: seguir para $this->bpe->issue()…->handle()
+        }
+    }
+}
+```
+
 ## Injetar `Mdfe`
 
 Mesmo padrão para MDF-e (modelo 58):
@@ -197,7 +235,7 @@ Aliases: `fiscal.mdfe`, handlers `fiscal.mdfe.handler.*`, queries `fiscal.mdfe.q
 Diagnóstico: `php artisan fiscal:mdfe:status --uf=RS`.
 
 <Warning>
-Não injete `Operation/*` (`IssueCte`, `IssueMdfe`, …) na aplicação — são `@internal`. Use `Cte`, `Mdfe`, `CteOs` ou Handlers públicos.
+Não injete `Operation/*` (`IssueCte`, `IssueMdfe`, `IssueBpe`, …) na aplicação — são `@internal`. Use `Cte`, `Mdfe`, `CteOs`, `Bpe` ou Handlers públicos.
 </Warning>
 
 Diagnóstico CT-e: `php artisan fiscal:cte:status`. Detalhes no README do pacote `suot/fiscal-laravel`.

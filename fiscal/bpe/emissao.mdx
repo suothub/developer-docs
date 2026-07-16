@@ -1,0 +1,128 @@
+---
+title: "Emitir BP-e"
+sidebarTitle: "Emissão"
+description: "Emita BP-e modelo 63 (passagem rodoviária) com $bpe->issue()…->handle()."
+---
+
+## O quê / quando
+
+Use BP-e para **passagem rodoviária regular** — bilhete fiscal vinculado a trecho, embarque, viagem e valores. Transmita ao autorizador via `BPeRecepcao`. Use homologação até ter evidência completa de homologação.
+
+O host monta dados comerciais (venda, assento, pagamento no caixa) e chama o SDK no timing configurado (`fiscal_timing` — venda ou embarque). Passageiro interestadual exige identificação em `withPassage()` (`BpePassenger`).
+
+## Exemplo
+
+```php
+use Suot\Fiscal\Core\Exception\InfrastructureException;
+use Suot\Fiscal\Core\Result\RetryMode;
+use Suot\Fiscal\Core\ValueObject\Uf;
+use Suot\Fiscal\Bpe\Data\BpeAddress;
+use Suot\Fiscal\Bpe\Data\BpeEmitter;
+use Suot\Fiscal\Bpe\Data\BpeIcms;
+use Suot\Fiscal\Bpe\Data\BpeMunicipality;
+use Suot\Fiscal\Bpe\Data\BpePassage;
+use Suot\Fiscal\Bpe\Data\BpePassenger;
+use Suot\Fiscal\Bpe\Data\BpePayment;
+use Suot\Fiscal\Bpe\Data\BpeRoute;
+use Suot\Fiscal\Bpe\Data\BpeTrip;
+use Suot\Fiscal\Bpe\Data\BpeValueComponent;
+use Suot\Fiscal\Bpe\Data\BpeValues;
+
+$palmas = new BpeMunicipality('1721000', 'Palmas', 'TO');
+$saoPaulo = new BpeMunicipality('3550308', 'Sao Paulo', 'SP');
+$boardingAt = '2026-08-01T08:00:00-03:00';
+$validUntil = '2026-08-01T23:59:59-03:00';
+
+try {
+    $result = $bpe->issue()
+        ->forOperation('ticket-456-issue')
+        ->inHomologation()
+        ->issuedIn(new Uf('TO'))
+        ->numbered('1', '42')
+        ->followingRoute(new BpeRoute($palmas, $saoPaulo))
+        ->issuedBy(new BpeEmitter(
+            cnpj: '60708000114',
+            ie: '0961234567',
+            name: 'BPE EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL',
+            tradeName: 'TRANSPORTADORA HOMOLOG',
+            address: new BpeAddress(
+                street: 'Rua Teste',
+                number: '100',
+                district: 'Centro',
+                zip: '77000000',
+                municipality: $palmas,
+            ),
+        ))
+        ->withPassage(new BpePassage(
+            originLocationCode: $palmas->code,
+            originLocationName: 'Terminal Palmas',
+            destinationLocationCode: $saoPaulo->code,
+            destinationLocationName: 'Terminal Tiete',
+            boardingAt: $boardingAt,
+            validUntil: $validUntil,
+            passenger: new BpePassenger(
+                name: 'PASSAGEIRO HOMOLOGACAO',
+                documentType: '1',
+                documentNumber: '123456789',
+                cpf: '52998224725',
+            ),
+        ))
+        ->withTrip(new BpeTrip(
+            routeCode: 'PAL-SP-001',
+            routeDescription: 'Palmas x Sao Paulo',
+            tripType: '00',
+            serviceType: '1',
+            accommodationType: '1',
+            segmentType: '1',
+            travelAt: $boardingAt,
+        ))
+        ->withValues(new BpeValues(
+            ticketValue: '150.00',
+            discount: '0.00',
+            paymentValue: '150.00',
+            change: '0.00',
+            components: [new BpeValueComponent('01', '150.00')],
+            icms: new BpeIcms(
+                cst: '00',
+                base: '150.00',
+                rate: '12.00',
+                value: '18.00',
+            ),
+        ))
+        ->withPayment(new BpePayment(type: '01', amount: '150.00'))
+        ->handle();
+} catch (InfrastructureException $e) {
+    $failure = $e->toFailure('issue');
+    // Host: alertar; filar retry conforme $failure->retryPolicy (timeout ambíguo → QueryBeforeRetry)
+    throw $e;
+}
+
+if ($result->isAuthorized()) {
+    // Host: persistir accessKey, protocolNumber, submittedDocumentXml, responseXml, receivedAt, operationId
+}
+
+if ($result->isRejected()) {
+    $failure = $result->failure();
+    $policy = $result->retryPolicy();
+    match ($policy?->mode) {
+        RetryMode::AfterCorrection => /* remontar issue() com dados corrigidos + novo forOperation */,
+        RetryMode::QueryBeforeRetry => /* byAccessKey() antes de reemitir */,
+        RetryMode::AfterDelay, RetryMode::Immediate => /* filar conforme política */,
+        RetryMode::Never, null => /* definitivo; não reenviar */,
+    };
+}
+
+if ($result->isProcessing()) {
+    // Host: consultar por chave antes de reemitir; não emitir de novo às cegas
+}
+```
+
+<Tip>
+Rejeição `203` indica emitente não habilitado para BP-e na SEFAZ — regularize cadastro antes de tentar de novo. Use ISO 8601 com fuso em `boardingAt`, `validUntil` e `travelAt`.
+</Tip>
+
+## Result
+
+Ver [Resultados da emissão](/fiscal/bpe/resultados): `isAuthorized()`, `isRejected()`, `failure()`, `accessKey`, `protocolNumber`, XMLs.
+
+Trilha: [Status do serviço](/fiscal/bpe/consultas/status-servico) antes de emitir.

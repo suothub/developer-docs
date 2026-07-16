@@ -60,6 +60,23 @@ $result = $cteOs->issue()
 
 Portas: `serviceStatus()`, `issue()`, `byAccessKey()`, `cancel()`. Jornada completa: [CT-e OS](/fiscal/cte-os).
 
+## Client `$bpe` (modelo 63)
+
+BP-e usa o mesmo padrão com `Suot\Fiscal\Bpe\Application\Bpe`:
+
+```php
+use Suot\Fiscal\Bpe\Application\Bpe;
+
+// $bpe injetado via DI (Laravel Bridge em evolução)
+$result = $bpe->issue()
+    ->forOperation('ticket-1')
+    ->inHomologation()
+    // … cadeia tipada …
+    ->handle();
+```
+
+Portas: `serviceStatus()`, `issue()`, `byAccessKey()`, `cancel()`. Jornada completa: [BP-e](/fiscal/bpe). BP-e TM e TA **não** estão disponíveis nesta onda.
+
 ## Client `$mdfe` (modelo 58)
 
 MDF-e usa o mesmo padrão com `Suot\Fiscal\Mdfe\Application\Mdfe`:
@@ -100,4 +117,5 @@ Rejeição fiscal válida volta como `Result` (`isRejected()`, `failure()`), nã
 - [CT-e](/fiscal/cte) — jornada do documento
 - [MDF-e](/fiscal/mdfe) — manifesto e modelo 58
 - [CT-e OS](/fiscal/cte-os) — fretamento e modelo 67
+- [BP-e](/fiscal/bpe) — passagem rodoviária e modelo 63
 - [Instalação](/fiscal/instalacao) — Composer + registry
