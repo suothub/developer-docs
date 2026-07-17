@@ -12,6 +12,8 @@ Em homologação, a razão social do tomador deve ser `CTE EMITIDO EM AMBIENTE D
 
 Em produção, informe IBS/CBS com `->withIbsCbs(...)`. Em homologação, o SDK pode preencher o bloco de teste NT 2026.002 se você omitir o método.
 
+Para tomador em UF SP em contingência SVC, prefira `indIEToma=9` (não contribuinte) sem tag `IE`. A combinação `indIEToma=2` + `IE=ISENTO` foi rejeitada pela SVC-SP (`617` / `482`) nesta campanha.
+
 ## Exemplo — emissão normal (tpCTe=5)
 
 ```php
@@ -109,6 +111,10 @@ $result = $cte->issueSimplified()
 ```
 
 O protocolo do documento substituído fica no host (não vai no XML). O XML leva `infCteSub/chCte`.
+
+<Warning>
+A SEFAZ exige o evento tomador Prestação do Serviço em Desacordo (`610110`) no CT-e substituído antes de autorizar `tpCTe=6`. Sem esse evento, a rejeição típica é `cStat 739`. Esse evento ainda não está exposto na API pública do SDK.
+</Warning>
 
 <Warning>
 SVC só autoriza `tpCTe=5` (NT 2024.002 G008). Não combine `replacing()` com `inContingency(SvcRs|SvcSp)`.

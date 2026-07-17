@@ -9,7 +9,7 @@ O **CT-e Simplificado** (NT 2024.002) usa o mesmo modelo 57 do CT-e padrão, mas
 Consolida várias prestações (rotas/`det`) para **um único tomador** — sem detalhar remetente/destinatário individuais no documento.
 
 <Warning>
-Homologação mínima atingida (emissão `cStat 100`, consulta e cancelamento). Substituição e contingência têm pipeline tipado; não declare production-ready absoluto sem campanha completa dessas variantes.
+Homologação: emissão `cStat 100`, consulta, cancelamento e contingência SVC direta (`cStat 100`). Substituição (`tpCTe=6`) exige evento tomador Prestação em Desacordo (`610110`) antes de `replacing()` — esse evento ainda não está na API pública; a SEFAZ rejeita com `cStat 739` sem ele. Não declare production-ready absoluto.
 </Warning>
 
 ## Quando usar
