@@ -1,0 +1,41 @@
+---
+title: "CT-e Simplificado"
+sidebarTitle: "Simplificado"
+description: "CT-e modelo 57 com tpCTe 5/6 — consolidação de várias prestações para um único tomador via $cte->issueSimplified()."
+---
+
+O **CT-e Simplificado** (NT 2024.002) usa o mesmo modelo 57 do CT-e padrão, mas com leiaute `CTeSimp`, tipo `tpCTe` 5 (normal) ou 6 (substituição) e web service exclusivo `CTeRecepcaoSimpV4`.
+
+Consolida várias prestações (rotas/`det`) para **um único tomador** — sem detalhar remetente/destinatário individuais no documento.
+
+<Warning>
+Homologação mínima atingida (emissão `cStat 100`, consulta e cancelamento). Substituição e contingência têm pipeline tipado; não declare production-ready absoluto sem campanha completa dessas variantes.
+</Warning>
+
+## Quando usar
+
+- Várias entregas/prestações para o **mesmo tomador**
+- Carga fracionada com NF-e vinculadas por rota (`det/infNFe`)
+- Não use o Simplificado quando precisar do leiaute completo com rem/dest/exped/receb — nesse caso use [`$cte->issue()`](/fiscal/cte/emissao)
+
+## Jornada
+
+<CardGroup cols={2}>
+  <Card title="Emissão Simplificado" icon="file-plus" href="/fiscal/cte/simplificado/emissao">
+    `$cte->issueSimplified()…->handle()` — tpCTe=5; `replacing()` para tpCTe=6.
+  </Card>
+  <Card title="Status / consulta / cancelamento" icon="list-checks" href="/fiscal/cte/consultas/status-servico">
+    Reutilizam os pipelines do CT-e padrão no mesmo client `$cte`.
+  </Card>
+</CardGroup>
+
+## Operações
+
+| Fluxo | Entry | SOAP |
+|-------|--------|------|
+| Status | `$cte->serviceStatus()…->handle()` | `CteStatusServicoV4` |
+| Emissão Simplificado | `$cte->issueSimplified()…->handle()` | `CTeRecepcaoSimpV4` |
+| Substituição | `$cte->issueSimplified()…->replacing($ch, $nProt)->handle()` | `CTeRecepcaoSimpV4` (tpCTe=6) |
+| Contingência SVC/EPEC | `$cte->issueSimplifiedInContingency()…->inContingency(…)->handle()` | `CTeRecepcaoSimpV4` (tpEmis 4/7/8; SVC só tpCTe=5) |
+| Consulta | `$cte->byAccessKey()…->handle()` | `CteConsultaV4` |
+| Cancelamento | `$cte->cancel()…->handle()` | `CTeRecepcaoEventoV4` (`110111`) |

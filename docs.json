@@ -89,6 +89,13 @@
               "fiscal/cte/resultados",
               "fiscal/cte/contingencia",
               {
+                "group": "CT-e Simplificado",
+                "pages": [
+                  "fiscal/cte/simplificado/index",
+                  "fiscal/cte/simplificado/emissao"
+                ]
+              },
+              {
                 "group": "Consultas",
                 "pages": [
                   "fiscal/cte/consultas/status-servico",

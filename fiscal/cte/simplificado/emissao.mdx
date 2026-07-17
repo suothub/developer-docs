@@ -1,0 +1,139 @@
+---
+title: "Emitir CT-e Simplificado"
+sidebarTitle: "Emissão"
+description: "Emita CT-e Simplificado (modelo 57, tpCTe 5/6) com $cte->issueSimplified()…->handle() via CTeRecepcaoSimpV4."
+---
+
+## O quê / quando
+
+Use o CT-e Simplificado para consolidar **várias prestações** (rotas em `det`) para **um único tomador**. Transmita via `CTeRecepcaoSimpV4` — não use `CTeRecepcaoSincV4` do CT-e padrão.
+
+Em homologação, a razão social do tomador deve ser `CTE EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL`.
+
+## Exemplo — emissão normal (tpCTe=5)
+
+```php
+use Suot\Fiscal\Core\Exception\InfrastructureException;
+use Suot\Fiscal\Core\ValueObject\Uf;
+use Suot\Fiscal\Cte\Data\Simplified\SimplifiedCteCargoQuantity;
+use Suot\Fiscal\Cte\Data\Simplified\SimplifiedCteDetail;
+use Suot\Fiscal\Cte\Data\Simplified\SimplifiedCteDetailComponent;
+use Suot\Fiscal\Cte\Data\Simplified\SimplifiedCteDetailNfe;
+use Suot\Fiscal\Cte\Data\Simplified\SimplifiedCteTaker;
+
+try {
+    $result = $cte->issueSimplified()
+        ->forOperation('ot-consolidada-42-simp')
+        ->inHomologation()
+        ->issuedIn(new Uf('TO'))
+        ->withIdentification(
+            cfop: '6353',
+            natOp: 'PRESTACAO DE SERVICO DE TRANSPORTE',
+            serie: '1',
+            number: '42',
+            municipalityCode: '1721000',
+            municipalityName: 'Palmas',
+            originUf: 'TO',
+            destinationUf: 'SP',
+        )
+        ->issuedBy(
+            cnpj: '48014145000178',
+            ie: '295269103',
+            name: 'CTE EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL',
+            tradeName: 'EMITENTE HOMOLOG',
+            street: 'Rua Teste',
+            number: '100',
+            district: 'Centro',
+            zip: '77000000',
+        )
+        ->takenBy(new SimplifiedCteTaker(
+            role: '4',
+            ieIndicator: '2',
+            cnpj: '48014145000178',
+            ie: 'ISENTO',
+            name: 'CTE EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL',
+            street: 'Rua Tomador',
+            number: '400',
+            district: 'Centro',
+            municipalityCode: '3550308',
+            municipalityName: 'Sao Paulo',
+            zip: '01000000',
+            uf: 'SP',
+        ))
+        ->withCargo(
+            '1000.00',
+            'MERCADORIAS DIVERSAS',
+            new SimplifiedCteCargoQuantity('01', '03', '100.0000'),
+        )
+        ->withDetail(new SimplifiedCteDetail(
+            itemNumber: '1',
+            originMunicipalityCode: '1721000',
+            originMunicipalityName: 'Palmas',
+            destinationMunicipalityCode: '3550308',
+            destinationMunicipalityName: 'Sao Paulo',
+            serviceValue: '100.00',
+            receivableValue: '100.00',
+            components: [new SimplifiedCteDetailComponent('FRETE VALOR', '100.00')],
+            linkedNfes: [new SimplifiedCteDetailNfe($chaveNfe44)],
+        ))
+        ->withRoadModal('12345678')
+        ->withTotals('100.00', '100.00', '12.00')
+        ->handle();
+} catch (InfrastructureException $e) {
+    $failure = $e->toFailure('issue');
+    // Host: alertar; filar retry conforme $failure->retryPolicy
+    throw $e;
+}
+
+if ($result->isAuthorized()) {
+    // Host: persistir XML, protocolo, chave; não reemitir o mesmo operationId
+} elseif ($result->isRejected()) {
+    $error = $result->failure();
+    // Host: corrigir dados ou cadastro; não reenviar cego
+} elseif ($result->isProcessing()) {
+    $policy = $result->retryPolicy();
+    // Host: consultar por chave antes de retry se a política exigir
+}
+```
+
+## Substituição (tpCTe=6)
+
+```php
+$result = $cte->issueSimplified()
+    ->forOperation('ot-consolidada-42-sub')
+    // …mesmos dados da emissão…
+    ->replacing($chaveCteSubstituido44, $protocoloAutorizacao)
+    ->handle();
+```
+
+O protocolo do documento substituído fica no host (não vai no XML). O XML leva `infCteSub/chCte`.
+
+<Warning>
+SVC só autoriza `tpCTe=5` (NT 2024.002 G008). Não combine `replacing()` com `inContingency(SvcRs|SvcSp)`.
+</Warning>
+
+## Contingência
+
+```php
+use Suot\Fiscal\Cte\ValueObject\CteEmissionType;
+
+$result = $cte->issueSimplifiedInContingency()
+    ->forOperation('ot-consolidada-42-svc')
+    // …dados da emissão (tpCTe=5)…
+    ->inContingency(
+        CteEmissionType::SvcRs,
+        '2026-07-17T10:00:00-03:00',
+        'Falha de comunicacao com a SEFAZ autorizadora',
+    )
+    ->handle();
+```
+
+## Como ler o Result
+
+O retorno é o mesmo `IssueCteResult` do CT-e padrão (`isAuthorized` / `isRejected` / `isProcessing`, `failure()`, `retryPolicy()`). Persistência e política de retry ficam no host.
+
+## Próximos passos
+
+- [Visão geral do Simplificado](/fiscal/cte/simplificado)
+- [Cancelamento](/fiscal/cte/eventos/cancelamento)
+- [Consulta por chave](/fiscal/cte/consultas/por-chave)
