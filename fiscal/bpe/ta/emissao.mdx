@@ -1,0 +1,107 @@
+---
+title: "Emitir BP-e TA"
+sidebarTitle: "Emissão TA"
+description: "Emita BP-e TA (transporte aéreo, modelo 63, modal 2) com $bpeTa->issue()…->handle() via BPeRecepcaoTA."
+---
+
+## O quê / quando
+
+Use BP-e TA para **transporte aéreo** — documento fiscal com identificação de voo (`infViagem`), passagem (`infPassagem`), valores (`infValorBPe`) e grupo tributário `imp/IBSCBS`. Transmita ao autorizador via `BPeRecepcaoTA` (não use `BPeRecepcao` do BP-e padrão nem `BPeRecepcaoTM`).
+
+Diferente do TM, o schema `TBPeTA` **inclui** `infBPeSupl`/`qrCodBPe` no XML: o QR Code é anexado após a assinatura, como no BP-e padrão.
+
+## Exemplo
+
+```php
+use Suot\Fiscal\Core\Exception\InfrastructureException;
+use Suot\Fiscal\Core\Result\RetryMode;
+use Suot\Fiscal\Core\ValueObject\Uf;
+use Suot\Fiscal\Bpe\Data\BpeAddress;
+use Suot\Fiscal\Bpe\Data\BpeEmitter;
+use Suot\Fiscal\Bpe\Data\BpeMunicipality;
+use Suot\Fiscal\Bpe\Data\BpePayment;
+use Suot\Fiscal\Bpe\Data\BpeRoute;
+use Suot\Fiscal\Bpe\Data\BpeTaIbsCbs;
+use Suot\Fiscal\Bpe\Data\BpeTaPassage;
+use Suot\Fiscal\Bpe\Data\BpeTaTrip;
+use Suot\Fiscal\Bpe\Data\BpeTaValues;
+use Suot\Fiscal\Bpe\Data\BpeValueComponent;
+
+$palmas = new BpeMunicipality('1721000', 'Palmas', 'TO');
+$saoPaulo = new BpeMunicipality('3550308', 'Sao Paulo', 'SP');
+
+try {
+    $result = $bpeTa->issue()
+        ->forOperation('flight-batch-42-issue')
+        ->inHomologation()
+        ->issuedIn(new Uf('TO'))
+        ->numbered('1', '42')
+        ->purchaseType('0')
+        ->buyerPresence('1')
+        ->followingRoute(new BpeRoute($palmas, $saoPaulo))
+        ->issuedBy(new BpeEmitter(
+            cnpj: '60708000114',
+            ie: '0961234567',
+            name: 'BPE TA EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL',
+            tradeName: 'CIA AEREA HOMOLOG',
+            address: new BpeAddress(
+                street: 'Rua Teste',
+                number: '100',
+                district: 'Centro',
+                zip: '77000000',
+                municipality: $palmas,
+            ),
+        ))
+        ->withPassage(new BpeTaPassage(
+            boardingAt: '2026-07-15T14:00:00-03:00',
+            validUntil: '2026-07-15T23:59:59-03:00',
+        ))
+        ->withTrip(new BpeTaTrip(
+            flightNumber: 'G31234',
+            operatingAirlineIata: 'G3',
+            tripType: '00',
+            originAirportIata: 'PMW',
+            destinationAirportIata: 'GRU',
+            serviceType: '12',
+            accommodationType: '6',
+            segmentType: '1',
+            travelAt: '2026-07-15T14:00:00-03:00',
+        ))
+        ->withValues(new BpeTaValues(
+            ticketValue: '150.00',
+            discount: '0.00',
+            paymentValue: '150.00',
+            change: '0.00',
+            components: [new BpeValueComponent('01', '150.00')],
+        ))
+        ->withIbsCbs(new BpeTaIbsCbs(
+            cst: '000',
+            taxClassification: '000001',
+        ))
+        ->withTotalDfeValue('150.00')
+        ->withPayment(new BpePayment(type: '01', amount: '150.00'))
+        ->handle();
+} catch (InfrastructureException $e) {
+    $failure = $e->toFailure('issue');
+    // Host: alertar; filar retry conforme $failure->retryPolicy (timeout ambíguo → QueryBeforeRetry)
+    throw $e;
+}
+
+if ($result->isAuthorized()) {
+    // Host: persistir XML, protocolo, chave; não reemitir o mesmo operationId
+} elseif ($result->isRejected()) {
+    $error = $result->failure();
+    // Host: corrigir dados ou cadastro; não reenviar cego
+} elseif ($result->isProcessing()) {
+    $policy = $result->retryPolicy();
+    // Host: consultar por chave antes de retry se RetryMode exigir
+}
+```
+
+## Como ler o Result
+
+O retorno é o mesmo `IssueBpeResult` do BP-e padrão. Veja [Resultados](/fiscal/bpe/resultados).
+
+## Endpoints
+
+`BPeRecepcaoTA` está listado no portal apenas para **SVRS** (produção e homologação) em 2026-07-16. MG homologação lista apenas `BPeRecepcaoTM`; MS/MT/PR/SP não listam recepção TA — o dataset do SDK preserva essa cobertura real.

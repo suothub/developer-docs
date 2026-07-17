@@ -155,6 +155,13 @@
                   "fiscal/bpe/tm/index",
                   "fiscal/bpe/tm/emissao"
                 ]
+              },
+              {
+                "group": "BP-e TA",
+                "pages": [
+                  "fiscal/bpe/ta/index",
+                  "fiscal/bpe/ta/emissao"
+                ]
               }
             ]
           },

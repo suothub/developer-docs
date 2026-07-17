@@ -1,0 +1,44 @@
+---
+title: "BP-e TA — transporte aéreo"
+sidebarTitle: "Visão geral TA"
+description: "API pública de BP-e TA (modelo 63, modal aéreo) via $bpeTa->…->handle(): emissão aérea, consultas e cancelamento compartilhados."
+---
+
+O **BP-e TA** cobre bilhete de passagem de **transporte aéreo**. O client público é `Suot\Fiscal\Bpe\Application\BpeTa` via `$bpeTa->…->handle()`.
+
+A emissão usa o serviço dedicado `BPeRecepcaoTA` e o XML raiz `BPeTA` (`modal=2`). Status, consulta por chave e cancelamento (`110111`) reutilizam os mesmos web services do BP-e padrão.
+
+<Warning>
+Capacidades fiscais só são production-ready após schemas importados, fixtures, ciclo de vida completo e evidência de homologação. Status do serviço homologado com `cStat 107` (2026-07-16). Emissão TA em homologação retornou `cStat 203` (emitente não habilitado para BP-e) — mesmo bloqueio cadastral do BP-e padrão.
+</Warning>
+
+## Jornada
+
+<CardGroup cols={2}>
+  <Card title="Emissão TA" icon="plane" href="/fiscal/bpe/ta/emissao">
+    `$bpeTa->issue()…->handle()` — passagem, voos e valores aéreos.
+  </Card>
+  <Card title="BP-e padrão" icon="ticket" href="/fiscal/bpe">
+    Passagem rodoviária regular via `$bpe->…->handle()`.
+  </Card>
+</CardGroup>
+
+## Consultas e eventos (compartilhados)
+
+Use o client TA com as mesmas operações de status, consulta e cancelamento:
+
+- [Status do serviço](/fiscal/bpe/consultas/status-servico) — via `$bpeTa->serviceStatus()`
+- [Por chave](/fiscal/bpe/consultas/por-chave) — via `$bpeTa->byAccessKey()`
+- [Cancelamento](/fiscal/bpe/eventos/cancelamento) — via `$bpeTa->cancel()`
+
+## Pacote
+
+```bash
+composer require suot/fiscal-core suot/fiscal-sefaz suot/fiscal-bpe
+```
+
+Reserva, voo, embarque e caixa ficam no host — o SDK trata o documento fiscal.
+
+## Cobertura de endpoints
+
+`BPeRecepcaoTA` é listado no portal apenas para **SVRS** (produção e homologação) em 2026-07-16. MG homologação lista somente `BPeRecepcaoTM`; MS/MT/PR/SP não listam recepção TA. O dataset do SDK preserva essa cobertura real.
