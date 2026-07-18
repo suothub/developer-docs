@@ -9,7 +9,7 @@ O **CT-e Simplificado** (NT 2024.002) usa o mesmo modelo 57 do CT-e padrão, mas
 Consolida várias prestações (rotas/`det`) para **um único tomador** — sem detalhar remetente/destinatário individuais no documento.
 
 <Warning>
-Homologação: emissão `cStat 100`, consulta, cancelamento e contingência SVC direta (`cStat 100`). Substituição (`tpCTe=6`) exige evento tomador Prestação em Desacordo (`610110`) antes de `replacing()` — esse evento ainda não está na API pública; a SEFAZ rejeita com `cStat 739` sem ele. Não declare production-ready absoluto.
+Homologação: emissão `cStat 100`, consulta, cancelamento, contingência SVC direta (`cStat 100`) e substituição (`tpCTe=6`) após `$cte->prestDesacordo()` (`610110`). Sem o evento do tomador, a SEFAZ rejeita com `cStat 739`. Não declare production-ready absoluto.
 </Warning>
 
 ## Quando usar
@@ -36,6 +36,7 @@ Homologação: emissão `cStat 100`, consulta, cancelamento e contingência SVC 
 | Status | `$cte->serviceStatus()…->handle()` | `CteStatusServicoV4` |
 | Emissão Simplificado | `$cte->issueSimplified()…->handle()` | `CTeRecepcaoSimpV4` |
 | Substituição | `$cte->issueSimplified()…->replacing($ch, $nProt)->handle()` | `CTeRecepcaoSimpV4` (tpCTe=6) |
+| Prestação em desacordo | `$cte->prestDesacordo()…->handle()` | `CTeRecepcaoEventoV4` (`610110`) — pré-requisito da substituição |
 | Contingência SVC/EPEC | `$cte->issueSimplifiedInContingency()…->inContingency(…)->handle()` | `CTeRecepcaoSimpV4` (tpEmis 4/7/8; SVC só tpCTe=5) |
 | Consulta | `$cte->byAccessKey()…->handle()` | `CteConsultaV4` |
 | Cancelamento | `$cte->cancel()…->handle()` | `CTeRecepcaoEventoV4` (`110111`) |

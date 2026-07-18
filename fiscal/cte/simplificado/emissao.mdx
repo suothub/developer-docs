@@ -102,19 +102,54 @@ if ($result->isAuthorized()) {
 
 ## Substituição (tpCTe=6)
 
+Antes de `replacing()`, registre o evento do tomador Prestação em Desacordo (`610110`):
+
 ```php
-$result = $cte->issueSimplified()
-    ->forOperation('ot-consolidada-42-sub')
-    // …mesmos dados da emissão…
-    ->replacing($chaveCteSubstituido44, $protocoloAutorizacao)
-    ->handle();
+use Suot\Fiscal\Core\Exception\InfrastructureException;
+
+try {
+    $prest = $cte->prestDesacordo()
+        ->forOperation('ot-consolidada-42-prest-desacordo')
+        ->inHomologation()
+        ->accessKey($chaveCteSubstituido44)
+        ->authorCnpj($cnpjTomador)
+        ->observation('Prestacao do servico em desacordo para substituicao do CTe')
+        ->handle();
+} catch (InfrastructureException $e) {
+    $failure = $e->toFailure('prestDesacordo');
+    // Host: alertar; filar retry conforme $failure->retryPolicy
+    throw $e;
+}
+
+if (! $prest->isRegistered()) {
+    // Host: corrigir dados; sem 610110 a substituição tende a cStat 739
+}
+
+try {
+    $result = $cte->issueSimplified()
+        ->forOperation('ot-consolidada-42-sub')
+        // …mesmos dados da emissão…
+        ->replacing($chaveCteSubstituido44, $protocoloAutorizacao)
+        ->handle();
+} catch (InfrastructureException $e) {
+    $failure = $e->toFailure('issueSimplified');
+    // Host: alertar; filar retry conforme $failure->retryPolicy
+    throw $e;
+}
+
+if ($result->isAuthorized()) {
+    // Host: persistir XML, protocolo, chave do substituto; vincular ao CT-e original
+} elseif ($result->isRejected()) {
+    $error = $result->failure();
+    // Host: corrigir dados ou cadastro; não reenviar cego
+}
 ```
 
 O protocolo do documento substituído fica no host (não vai no XML). O XML leva `infCteSub/chCte`.
 
-<Warning>
-A SEFAZ exige o evento tomador Prestação do Serviço em Desacordo (`610110`) no CT-e substituído antes de autorizar `tpCTe=6`. Sem esse evento, a rejeição típica é `cStat 739`. Esse evento ainda não está exposto na API pública do SDK.
-</Warning>
+<Tip>
+Detalhe do evento: [Prestação em desacordo](/fiscal/cte/eventos/prestacao-desacordo).
+</Tip>
 
 <Warning>
 SVC só autoriza `tpCTe=5` (NT 2024.002 G008). Não combine `replacing()` com `inContingency(SvcRs|SvcSp)`.
@@ -143,5 +178,6 @@ O retorno é o mesmo `IssueCteResult` do CT-e padrão (`isAuthorized` / `isRejec
 ## Próximos passos
 
 - [Visão geral do Simplificado](/fiscal/cte/simplificado)
+- [Prestação em desacordo](/fiscal/cte/eventos/prestacao-desacordo)
 - [Cancelamento](/fiscal/cte/eventos/cancelamento)
 - [Consulta por chave](/fiscal/cte/consultas/por-chave)

@@ -1,0 +1,56 @@
+---
+title: "Prestação em desacordo"
+sidebarTitle: "Prestação em desacordo"
+description: "Registre o evento 610110 (evPrestDesacordo) com $cte->prestDesacordo() — pré-requisito da substituição do CT-e Simplificado."
+---
+
+## O quê / quando
+
+Evento do **tomador** (`610110` / `evPrestDesacordo`) que registra desacordo com a prestação. É o pré-requisito da SEFAZ para autorizar CT-e Simplificado de substituição (`tpCTe=6`). Sem ele, a rejeição típica é `cStat 739`.
+
+O autor do evento é o CNPJ do tomador (não o emitente). Em homologação, se tomador e emitente compartilham o mesmo CNPJ/certificado, o mesmo certificado serve.
+
+`xObs` (`observation`) exige no mínimo 15 caracteres.
+
+## Exemplo
+
+```php
+use Suot\Fiscal\Core\Exception\InfrastructureException;
+use Suot\Fiscal\Core\Result\RetryMode;
+
+try {
+    $result = $cte->prestDesacordo()
+        ->forOperation('prest-desacordo-1')
+        ->inHomologation()
+        ->accessKey($chave44)
+        ->authorCnpj($cnpjTomador)
+        ->observation('Prestacao do servico em desacordo para substituicao do CTe')
+        ->handle();
+} catch (InfrastructureException $e) {
+    $failure = $e->toFailure('prestDesacordo');
+    // Host: alertar; QueryBeforeRetry se timeout após envio — consultar antes de reenviar evento
+    throw $e;
+}
+
+if ($result->isRegistered()) {
+    // Host: persistir protocolNumber do evento, responseXml, accessKey, operationId
+}
+
+if ($result->isRejected()) {
+    $failure = $result->failure();
+    $policy = $result->retryPolicy();
+    match ($policy?->mode) {
+        RetryMode::AfterCorrection => /* corrigir observation/CNPJ e tentar de novo */,
+        RetryMode::QueryBeforeRetry => /* byAccessKey() antes de reenviar */,
+        RetryMode::AfterDelay, RetryMode::Immediate => /* filar conforme política */,
+        RetryMode::Never, null => /* definitivo; não reenviar */,
+    };
+}
+```
+
+Resultado: `RegisterPrestDesacordoCteResult` — `isRegistered()`, `isRejected()`, `failure()`, `retryPolicy()`, `protocolNumber` do evento quando registrado.
+
+## Próximos passos
+
+- [Substituição Simplificado](/fiscal/cte/simplificado/emissao#substituição-tpcte6)
+- [Consulta por chave](/fiscal/cte/consultas/por-chave)

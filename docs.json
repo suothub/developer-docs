@@ -111,7 +111,8 @@
                   "fiscal/cte/eventos/cancelamento",
                   "fiscal/cte/eventos/carta-correcao",
                   "fiscal/cte/eventos/comprovante-entrega",
-                  "fiscal/cte/eventos/insucesso-entrega"
+                  "fiscal/cte/eventos/insucesso-entrega",
+                  "fiscal/cte/eventos/prestacao-desacordo"
                 ]
               }
             ]
