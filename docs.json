@@ -181,6 +181,7 @@
               "fiscal/mdfe/emissao",
               "fiscal/mdfe/resultados",
               "fiscal/mdfe/contingencia",
+              "fiscal/mdfe/damdfe",
               {
                 "group": "Consultas",
                 "pages": [

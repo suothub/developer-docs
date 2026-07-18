@@ -1,0 +1,107 @@
+---
+title: "Gerar DAMDFE (PDF auxiliar)"
+sidebarTitle: "DAMDFE"
+description: "Gere o DAMDFE em PDF a partir do XML do MDF-e ou procMDFe com $mdfe->renderDamdfe() — operação local, sem SEFAZ."
+---
+
+## O quê / quando
+
+O DAMDFE é o documento auxiliar impresso do MDF-e (modelo 58). Use `$mdfe->renderDamdfe()` quando o host já tem o XML autorizado (`procMDFe`) ou o manifesto em contingência e precisa do PDF para arquivo, download ou impressão.
+
+A operação é **local**: não consulta a SEFAZ. O host persiste e entrega o PDF.
+
+<Warning>
+A geração do DAMDFE no SDK ainda **não** é production-ready: falta revisão visual contra o Anexo II (MOC) e evidência de uso no host. Cobertura atual: modal rodoviário (normal/homologação + contingência `tpEmis=2`).
+</Warning>
+
+## Exemplo — gerar PDF
+
+```php
+use Suot\Fiscal\Mdfe\Damdfe\Enum\PaperSize;
+use Suot\Fiscal\Mdfe\Damdfe\Exception\DamdfeXmlException;
+
+try {
+    $result = $mdfe->renderDamdfe()
+        ->fromXml($procMdfeXml)
+        ->paperSize(PaperSize::A4)
+        ->handle();
+} catch (DamdfeXmlException $e) {
+    // Host: XML inválido ou QR inconsistente (modo estrito); corrigir origem e não gerar PDF
+    throw $e;
+}
+
+if ($result->isPdf()) {
+    // Host: persistir pdfBytes, accessKey, pageCount; expor download
+    $pdf = $result->pdfBytes();
+    $chave = $result->accessKey();
+    $xmlHash = $result->metadata()['xmlSha256'] ?? null;
+}
+
+foreach ($result->warnings() as $warning) {
+    // Host: registrar warning.code / warning.message
+}
+```
+
+## Result (`RenderDamdfeResult`)
+
+| Método | Uso |
+|---|---|
+| `isPdf()` | Bytes começam com `%PDF` |
+| `pdfBytes()` | Conteúdo do PDF |
+| `accessKey()` | Chave de 44 dígitos |
+| `pageCount()` | Páginas geradas |
+| `paperSize()` | Papel usado (A4/A3) |
+| `warnings()` | Avisos de layout |
+| `metadata()` | `modal`, `tpAmb`, `tpEmis`, `contingency`, `xmlSha256`, … |
+
+## Extrair campos (sem PDF)
+
+```php
+use Suot\Fiscal\Mdfe\Damdfe\Exception\DamdfeXmlException;
+
+try {
+    $extract = $mdfe->renderDamdfe()
+        ->fromXml($procMdfeXml)
+        ->extract();
+} catch (DamdfeXmlException $e) {
+    // Host: XML não parseável; não indexar
+    throw $e;
+}
+
+$chave = $extract->accessKey();
+$campos = $extract->fields(); // emitente, rodoviário, carga, CT-e, …
+$hash = $extract->xmlSha256();
+```
+
+## Validar se dá para imprimir
+
+```php
+$report = $mdfe->renderDamdfe()
+    ->fromXml($procMdfeXml)
+    ->validatePrintable();
+
+if ($report->isPrintable()) {
+    // Host: pode chamar ->handle() e persistir o PDF
+}
+
+if (! $report->isPrintable()) {
+    foreach ($report->errors() as $issue) {
+        // Host: corrigir issue.field / issue.code (SDK-XML-*, SDK-QR-*, …)
+    }
+}
+```
+
+## Cobertura atual
+
+- Modal rodoviário A4
+- Homologação (`tpAmb=2`)
+- Contingência offline (`tpEmis=2`, QR com `sign`, banner, docs da carga)
+- `extract()` / `validatePrintable()`
+
+Fora deste corte: demais modais, cancelado/encerrado, watermark histórico.
+
+## Próximos passos
+
+- Obter o XML protocolado: [Download procMDFe](/fiscal/mdfe/consultas/download-proc)
+- Contingência: [Contingência MDF-e](/fiscal/mdfe/contingencia)
+- Jornada: [Visão geral MDF-e](/fiscal/mdfe)
