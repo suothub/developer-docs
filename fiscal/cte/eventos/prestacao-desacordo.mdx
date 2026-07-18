@@ -1,7 +1,7 @@
 ---
 title: "Prestação em desacordo"
 sidebarTitle: "Prestação em desacordo"
-description: "Registre o evento 610110 (evPrestDesacordo) com $cte->prestDesacordo() — pré-requisito da substituição do CT-e Simplificado."
+description: "Registre o evento 610110 (evPrestDesacordo) com $cte->serviceInDisagreement() — pré-requisito da substituição do CT-e Simplificado."
 ---
 
 ## O quê / quando
@@ -19,7 +19,7 @@ use Suot\Fiscal\Core\Exception\InfrastructureException;
 use Suot\Fiscal\Core\Result\RetryMode;
 
 try {
-    $result = $cte->prestDesacordo()
+    $result = $cte->serviceInDisagreement()
         ->forOperation('prest-desacordo-1')
         ->inHomologation()
         ->accessKey($chave44)
@@ -27,7 +27,7 @@ try {
         ->observation('Prestacao do servico em desacordo para substituicao do CTe')
         ->handle();
 } catch (InfrastructureException $e) {
-    $failure = $e->toFailure('prestDesacordo');
+    $failure = $e->toFailure('serviceInDisagreement');
     // Host: alertar; QueryBeforeRetry se timeout após envio — consultar antes de reenviar evento
     throw $e;
 }
@@ -48,7 +48,7 @@ if ($result->isRejected()) {
 }
 ```
 
-Resultado: `RegisterPrestDesacordoCteResult` — `isRegistered()`, `isRejected()`, `failure()`, `retryPolicy()`, `protocolNumber` do evento quando registrado.
+Resultado: `ServiceInDisagreementCteResult` — `isRegistered()`, `isRejected()`, `failure()`, `retryPolicy()`, `protocolNumber` do evento quando registrado.
 
 ## Próximos passos
 

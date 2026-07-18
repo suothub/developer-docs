@@ -108,7 +108,7 @@ Antes de `replacing()`, registre o evento do tomador Prestação em Desacordo (`
 use Suot\Fiscal\Core\Exception\InfrastructureException;
 
 try {
-    $prest = $cte->prestDesacordo()
+    $prest = $cte->serviceInDisagreement()
         ->forOperation('ot-consolidada-42-prest-desacordo')
         ->inHomologation()
         ->accessKey($chaveCteSubstituido44)
@@ -116,7 +116,7 @@ try {
         ->observation('Prestacao do servico em desacordo para substituicao do CTe')
         ->handle();
 } catch (InfrastructureException $e) {
-    $failure = $e->toFailure('prestDesacordo');
+    $failure = $e->toFailure('serviceInDisagreement');
     // Host: alertar; filar retry conforme $failure->retryPolicy
     throw $e;
 }
