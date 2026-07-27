@@ -1,0 +1,1072 @@
+{
+  ".atlas-analysis.json": {
+    "mtime": 1783943825.8394806,
+    "ast_hash": "913fc1fa4caecc0a49b23ad1a12b582f",
+    "semantic_hash": "913fc1fa4caecc0a49b23ad1a12b582f"
+  },
+  "docs.json": {
+    "mtime": 1784398233.6965322,
+    "ast_hash": "9a6a85a3da44d511e152c5401816ac77",
+    "semantic_hash": "9a6a85a3da44d511e152c5401816ac77"
+  },
+  "AGENTS.md": {
+    "mtime": 1784227222.4841857,
+    "ast_hash": "c7b54ceb74e96ec9b04048b1162cda31",
+    "semantic_hash": "c7b54ceb74e96ec9b04048b1162cda31"
+  },
+  "README.md": {
+    "mtime": 1783943825.840091,
+    "ast_hash": "6cc056eb896af30218bf7a07a207db44",
+    "semantic_hash": "6cc056eb896af30218bf7a07a207db44"
+  },
+  "antt/ciot.mdx": {
+    "mtime": 1783943825.8403008,
+    "ast_hash": "e4ffb5d03a941e9756f92c373784ddc6",
+    "semantic_hash": "e4ffb5d03a941e9756f92c373784ddc6"
+  },
+  "antt/configuracao.mdx": {
+    "mtime": 1783943825.840417,
+    "ast_hash": "046dde1c1aeed8bd698c0bb5e17931f4",
+    "semantic_hash": "046dde1c1aeed8bd698c0bb5e17931f4"
+  },
+  "antt/instalacao.mdx": {
+    "mtime": 1783943825.8405242,
+    "ast_hash": "71a6cb414b907a6973371206f7597d42",
+    "semantic_hash": "71a6cb414b907a6973371206f7597d42"
+  },
+  "antt/laravel-bridge.mdx": {
+    "mtime": 1783943825.8406446,
+    "ast_hash": "c5af3c05923136e6d1ded91c2adeb18b",
+    "semantic_hash": "c5af3c05923136e6d1ded91c2adeb18b"
+  },
+  "antt/rejeicoes.mdx": {
+    "mtime": 1783943825.8407705,
+    "ast_hash": "7bafdff36dc5ca9d6260296a885dc1c7",
+    "semantic_hash": "7bafdff36dc5ca9d6260296a885dc1c7"
+  },
+  "antt/resultados.mdx": {
+    "mtime": 1783943825.84086,
+    "ast_hash": "033e3883ffd39569f37364c6303b22ae",
+    "semantic_hash": "033e3883ffd39569f37364c6303b22ae"
+  },
+  "antt/rntrc.mdx": {
+    "mtime": 1783943825.8409867,
+    "ast_hash": "782ae23384b9e5ca5e6c63b692c7592a",
+    "semantic_hash": "782ae23384b9e5ca5e6c63b692c7592a"
+  },
+  "antt/visao-geral.mdx": {
+    "mtime": 1783943825.841396,
+    "ast_hash": "cb14c4481300151a221f4befd7167e68",
+    "semantic_hash": "cb14c4481300151a221f4befd7167e68"
+  },
+  "conceitos/arquitetura.mdx": {
+    "mtime": 1783943825.841662,
+    "ast_hash": "ff5652c389fb964066c0145a1b9a9791",
+    "semantic_hash": "ff5652c389fb964066c0145a1b9a9791"
+  },
+  "conceitos/cqrs.mdx": {
+    "mtime": 1783943825.8419156,
+    "ast_hash": "e53a9a18a332cdf900c47122a5ad6784",
+    "semantic_hash": "e53a9a18a332cdf900c47122a5ad6784"
+  },
+  "conceitos/licenciamento.mdx": {
+    "mtime": 1783943825.8420675,
+    "ast_hash": "5d6379d76eba53f6998796fd62b38307",
+    "semantic_hash": "5d6379d76eba53f6998796fd62b38307"
+  },
+  "conceitos/value-objects.mdx": {
+    "mtime": 1783943825.8422034,
+    "ast_hash": "155785f1cbf5767a4bd49f8c0701b4bd",
+    "semantic_hash": "155785f1cbf5767a4bd49f8c0701b4bd"
+  },
+  "fiscal/api-publica.mdx": {
+    "mtime": 1784235495.1767209,
+    "ast_hash": "78af9cde35756ab7657d2b8e1f1cb8a8",
+    "semantic_hash": "78af9cde35756ab7657d2b8e1f1cb8a8"
+  },
+  "fiscal/avaliar.mdx": {
+    "mtime": 1784051210.110685,
+    "ast_hash": "7973da55df3e4b84b7b33ca5b2dbfcb2",
+    "semantic_hash": "7973da55df3e4b84b7b33ca5b2dbfcb2"
+  },
+  "fiscal/bpe/consultas/por-chave.mdx": {
+    "mtime": 1784235495.177275,
+    "ast_hash": "ab707707521c3ec50d27e60a4f7a9d66",
+    "semantic_hash": "ab707707521c3ec50d27e60a4f7a9d66"
+  },
+  "fiscal/bpe/consultas/status-servico.mdx": {
+    "mtime": 1784235495.1777403,
+    "ast_hash": "70171a9ed629eeaa8c7414392e16cc2d",
+    "semantic_hash": "70171a9ed629eeaa8c7414392e16cc2d"
+  },
+  "fiscal/bpe/dabpe.mdx": {
+    "mtime": 1784398233.6968966,
+    "ast_hash": "b6ab68ae139be3570b9743bf43f76e85",
+    "semantic_hash": "b6ab68ae139be3570b9743bf43f76e85"
+  },
+  "fiscal/bpe/emissao.mdx": {
+    "mtime": 1784235495.1781147,
+    "ast_hash": "cf761f58009547ecee39133342331581",
+    "semantic_hash": "cf761f58009547ecee39133342331581"
+  },
+  "fiscal/bpe/eventos/cancelamento.mdx": {
+    "mtime": 1784235495.1784112,
+    "ast_hash": "7ee6c6ecff132babb190032c26100e70",
+    "semantic_hash": "7ee6c6ecff132babb190032c26100e70"
+  },
+  "fiscal/bpe/index.mdx": {
+    "mtime": 1784398233.697178,
+    "ast_hash": "d7a9aa8b14a3c314716c3ef1ec873899",
+    "semantic_hash": "d7a9aa8b14a3c314716c3ef1ec873899"
+  },
+  "fiscal/bpe/resultados.mdx": {
+    "mtime": 1784235495.1788936,
+    "ast_hash": "2e7d5c4f2c83be0f634a4e466ed66d29",
+    "semantic_hash": "2e7d5c4f2c83be0f634a4e466ed66d29"
+  },
+  "fiscal/bpe/ta/emissao.mdx": {
+    "mtime": 1784249352.6222117,
+    "ast_hash": "c4af8be2af16bd6f679aad429d35cb7f",
+    "semantic_hash": "c4af8be2af16bd6f679aad429d35cb7f"
+  },
+  "fiscal/bpe/ta/index.mdx": {
+    "mtime": 1784249331.0079973,
+    "ast_hash": "c9556614e3ffa7e648cec10da8745905",
+    "semantic_hash": "c9556614e3ffa7e648cec10da8745905"
+  },
+  "fiscal/bpe/tm/emissao.mdx": {
+    "mtime": 1784246808.6807432,
+    "ast_hash": "01a57fd9f733e088b9d900fcb0ff6712",
+    "semantic_hash": "01a57fd9f733e088b9d900fcb0ff6712"
+  },
+  "fiscal/bpe/tm/index.mdx": {
+    "mtime": 1784246808.6811206,
+    "ast_hash": "af5ecb6624461eb79dbb8b5c1a3249bd",
+    "semantic_hash": "af5ecb6624461eb79dbb8b5c1a3249bd"
+  },
+  "fiscal/configuracao.mdx": {
+    "mtime": 1784051210.1111333,
+    "ast_hash": "ddce01a2ddd2c890173350ef84f11d7f",
+    "semantic_hash": "ddce01a2ddd2c890173350ef84f11d7f"
+  },
+  "fiscal/cte-os/consultas/por-chave.mdx": {
+    "mtime": 1784224739.110437,
+    "ast_hash": "5d187613d2da58ee5ed555c615f345fd",
+    "semantic_hash": "5d187613d2da58ee5ed555c615f345fd"
+  },
+  "fiscal/cte-os/consultas/status-servico.mdx": {
+    "mtime": 1784224734.0735543,
+    "ast_hash": "d9b727538043d6373bbaa2a53378d4b3",
+    "semantic_hash": "d9b727538043d6373bbaa2a53378d4b3"
+  },
+  "fiscal/cte-os/emissao.mdx": {
+    "mtime": 1784224725.0680275,
+    "ast_hash": "49a87a37f5b7560995141e842c2c40de",
+    "semantic_hash": "49a87a37f5b7560995141e842c2c40de"
+  },
+  "fiscal/cte-os/eventos/cancelamento.mdx": {
+    "mtime": 1784224740.382605,
+    "ast_hash": "7cb3e1b294ecab30e23660d7a5ea57c8",
+    "semantic_hash": "7cb3e1b294ecab30e23660d7a5ea57c8"
+  },
+  "fiscal/cte-os/index.mdx": {
+    "mtime": 1784224717.832656,
+    "ast_hash": "fa0e9331f97202767e12f61db6ed604d",
+    "semantic_hash": "fa0e9331f97202767e12f61db6ed604d"
+  },
+  "fiscal/cte-os/resultados.mdx": {
+    "mtime": 1784224729.2412164,
+    "ast_hash": "ee610adff4d2f00b619cceadb99fdcb4",
+    "semantic_hash": "ee610adff4d2f00b619cceadb99fdcb4"
+  },
+  "fiscal/cte/consultas/distribuicao-dfe.mdx": {
+    "mtime": 1783954542.532757,
+    "ast_hash": "72c2c4baafc9852f936237db727340d6",
+    "semantic_hash": "72c2c4baafc9852f936237db727340d6"
+  },
+  "fiscal/cte/consultas/download-proc.mdx": {
+    "mtime": 1783954542.5329068,
+    "ast_hash": "0a2ae9723cdc7d665854b1e5b011ad54",
+    "semantic_hash": "0a2ae9723cdc7d665854b1e5b011ad54"
+  },
+  "fiscal/cte/consultas/por-chave.mdx": {
+    "mtime": 1783954542.5330548,
+    "ast_hash": "45c637e1128ae4207c5e07017a9cb7ff",
+    "semantic_hash": "45c637e1128ae4207c5e07017a9cb7ff"
+  },
+  "fiscal/cte/consultas/protocolo.mdx": {
+    "mtime": 1783954542.533196,
+    "ast_hash": "7c116251b954d229f518084269965c55",
+    "semantic_hash": "7c116251b954d229f518084269965c55"
+  },
+  "fiscal/cte/consultas/status-servico.mdx": {
+    "mtime": 1783954542.5333314,
+    "ast_hash": "6bc00d872742d7c91368927d691a4830",
+    "semantic_hash": "6bc00d872742d7c91368927d691a4830"
+  },
+  "fiscal/cte/contingencia.mdx": {
+    "mtime": 1783954542.533472,
+    "ast_hash": "f5493375140891c8071092ccb1037dfd",
+    "semantic_hash": "f5493375140891c8071092ccb1037dfd"
+  },
+  "fiscal/cte/dacte.mdx": {
+    "mtime": 1784396585.7353675,
+    "ast_hash": "52b53bff4e2df28f2f044d40e0889c90",
+    "semantic_hash": "52b53bff4e2df28f2f044d40e0889c90"
+  },
+  "fiscal/cte/emissao.mdx": {
+    "mtime": 1783954542.5336275,
+    "ast_hash": "f1e0b98395d73e711c76bb1422713006",
+    "semantic_hash": "f1e0b98395d73e711c76bb1422713006"
+  },
+  "fiscal/cte/eventos/cancelamento.mdx": {
+    "mtime": 1783954542.5338137,
+    "ast_hash": "61789079415c71282cc0c9a9d7b74343",
+    "semantic_hash": "61789079415c71282cc0c9a9d7b74343"
+  },
+  "fiscal/cte/eventos/carta-correcao.mdx": {
+    "mtime": 1783954542.5339482,
+    "ast_hash": "d336e0a0be1f514e9ec628e29b128a92",
+    "semantic_hash": "d336e0a0be1f514e9ec628e29b128a92"
+  },
+  "fiscal/cte/eventos/comprovante-entrega.mdx": {
+    "mtime": 1783954542.5340898,
+    "ast_hash": "c2c90ac3e64d723f62965713833e3d76",
+    "semantic_hash": "c2c90ac3e64d723f62965713833e3d76"
+  },
+  "fiscal/cte/eventos/insucesso-entrega.mdx": {
+    "mtime": 1783954542.534257,
+    "ast_hash": "b7f39933bbac9ef80248f602fd867258",
+    "semantic_hash": "b7f39933bbac9ef80248f602fd867258"
+  },
+  "fiscal/cte/eventos/prestacao-desacordo.mdx": {
+    "mtime": 1784383418.1575139,
+    "ast_hash": "73ad959796f7cbc813862c30ec68ecd7",
+    "semantic_hash": "73ad959796f7cbc813862c30ec68ecd7"
+  },
+  "fiscal/cte/index.mdx": {
+    "mtime": 1784396587.4445333,
+    "ast_hash": "93a89553ac4f202d2d4d881ed8450886",
+    "semantic_hash": "93a89553ac4f202d2d4d881ed8450886"
+  },
+  "fiscal/cte/resultados.mdx": {
+    "mtime": 1783954542.5347266,
+    "ast_hash": "5ac6b2b891faa0f36a3a7c92d16bbfdb",
+    "semantic_hash": "5ac6b2b891faa0f36a3a7c92d16bbfdb"
+  },
+  "fiscal/cte/simplificado/emissao.mdx": {
+    "mtime": 1784383418.1581798,
+    "ast_hash": "64f9b5cc32e7fec28970aabca9ec9094",
+    "semantic_hash": "64f9b5cc32e7fec28970aabca9ec9094"
+  },
+  "fiscal/cte/simplificado/index.mdx": {
+    "mtime": 1784383418.1585677,
+    "ast_hash": "629c8b90ccaadcf8689d33c9ffd95187",
+    "semantic_hash": "629c8b90ccaadcf8689d33c9ffd95187"
+  },
+  "fiscal/cte/validacao.mdx": {
+    "mtime": 1783954542.5348904,
+    "ast_hash": "0c97c29f96e0361a106dd8be428ef4e0",
+    "semantic_hash": "0c97c29f96e0361a106dd8be428ef4e0"
+  },
+  "fiscal/instalacao.mdx": {
+    "mtime": 1784235495.1792777,
+    "ast_hash": "68a4b1d9c2b9825c5e9595e3f54e94bc",
+    "semantic_hash": "68a4b1d9c2b9825c5e9595e3f54e94bc"
+  },
+  "fiscal/laravel-bridge.mdx": {
+    "mtime": 1784235495.179819,
+    "ast_hash": "85c43734dccd3e66bfd1352ade34c427",
+    "semantic_hash": "85c43734dccd3e66bfd1352ade34c427"
+  },
+  "fiscal/laravel-configuracao.mdx": {
+    "mtime": 1784051210.1128368,
+    "ast_hash": "0a81650f3e2efeb9bed6a68915e6581a",
+    "semantic_hash": "0a81650f3e2efeb9bed6a68915e6581a"
+  },
+  "fiscal/mdfe/consultas/distribuicao-dfe.mdx": {
+    "mtime": 1784227171.0583982,
+    "ast_hash": "6143b5b871c0f30b0d702320957f3a90",
+    "semantic_hash": "6143b5b871c0f30b0d702320957f3a90"
+  },
+  "fiscal/mdfe/consultas/download-proc.mdx": {
+    "mtime": 1784227167.6076112,
+    "ast_hash": "9d0c51c93bdc5c68cf0579c1ea76493f",
+    "semantic_hash": "9d0c51c93bdc5c68cf0579c1ea76493f"
+  },
+  "fiscal/mdfe/consultas/nao-encerrados.mdx": {
+    "mtime": 1784226272.875683,
+    "ast_hash": "0a0002d268471868eb81db183ba14426",
+    "semantic_hash": "0a0002d268471868eb81db183ba14426"
+  },
+  "fiscal/mdfe/consultas/por-chave.mdx": {
+    "mtime": 1784226269.423438,
+    "ast_hash": "07ec9cedab249cf6dba4ab21c8d68d4b",
+    "semantic_hash": "07ec9cedab249cf6dba4ab21c8d68d4b"
+  },
+  "fiscal/mdfe/consultas/status-servico.mdx": {
+    "mtime": 1784226267.51454,
+    "ast_hash": "dafe190cc19eeecc4ceab4a85f5caccc",
+    "semantic_hash": "dafe190cc19eeecc4ceab4a85f5caccc"
+  },
+  "fiscal/mdfe/contingencia.mdx": {
+    "mtime": 1784226265.9424362,
+    "ast_hash": "e6fb6ed9d2189bbec6723afd8d487003",
+    "semantic_hash": "e6fb6ed9d2189bbec6723afd8d487003"
+  },
+  "fiscal/mdfe/damdfe.mdx": {
+    "mtime": 1784397430.43945,
+    "ast_hash": "7b6c3fdea348840ac94e281c2e912546",
+    "semantic_hash": "7b6c3fdea348840ac94e281c2e912546"
+  },
+  "fiscal/mdfe/emissao.mdx": {
+    "mtime": 1784226251.9704642,
+    "ast_hash": "0620c8aa868c782f4c6de43977ee9111",
+    "semantic_hash": "0620c8aa868c782f4c6de43977ee9111"
+  },
+  "fiscal/mdfe/eventos/cancelamento.mdx": {
+    "mtime": 1784227174.0746934,
+    "ast_hash": "e18167ba141f02dc2c2a1db15988423f",
+    "semantic_hash": "e18167ba141f02dc2c2a1db15988423f"
+  },
+  "fiscal/mdfe/eventos/encerramento.mdx": {
+    "mtime": 1784227238.5930161,
+    "ast_hash": "3ed52889e439a322cf568eeae102aa0a",
+    "semantic_hash": "3ed52889e439a322cf568eeae102aa0a"
+  },
+  "fiscal/mdfe/eventos/inclusao-condutor.mdx": {
+    "mtime": 1784227241.5631673,
+    "ast_hash": "93726cc120c6b66bd33be061801c3be7",
+    "semantic_hash": "93726cc120c6b66bd33be061801c3be7"
+  },
+  "fiscal/mdfe/eventos/inclusao-dfe.mdx": {
+    "mtime": 1784227241.7961314,
+    "ast_hash": "300fcc488d4051d6609a21c57fcaf265",
+    "semantic_hash": "300fcc488d4051d6609a21c57fcaf265"
+  },
+  "fiscal/mdfe/index.mdx": {
+    "mtime": 1784397431.8562417,
+    "ast_hash": "63ce37bc2a6e30768b50ca506313e4b9",
+    "semantic_hash": "63ce37bc2a6e30768b50ca506313e4b9"
+  },
+  "fiscal/mdfe/resultados.mdx": {
+    "mtime": 1784226263.976207,
+    "ast_hash": "2533311c10291aeb6d15ec0a34f88bb9",
+    "semantic_hash": "2533311c10291aeb6d15ec0a34f88bb9"
+  },
+  "fiscal/rejeicoes.mdx": {
+    "mtime": 1784051210.1137369,
+    "ast_hash": "ee2db4eac1092fd6546fa15a9ee9853f",
+    "semantic_hash": "ee2db4eac1092fd6546fa15a9ee9853f"
+  },
+  "fiscal/resultados.mdx": {
+    "mtime": 1784051210.114092,
+    "ast_hash": "7b400ac5b719a53df0cfa7a1ed849ba3",
+    "semantic_hash": "7b400ac5b719a53df0cfa7a1ed849ba3"
+  },
+  "fiscal/retry.mdx": {
+    "mtime": 1784051210.1144054,
+    "ast_hash": "b33ef9b18ee1a00df85a59f21b2daaf4",
+    "semantic_hash": "b33ef9b18ee1a00df85a59f21b2daaf4"
+  },
+  "fiscal/visao-geral.mdx": {
+    "mtime": 1784227198.056487,
+    "ast_hash": "b2c358280ceb385a7c46812452fb52a4",
+    "semantic_hash": "b2c358280ceb385a7c46812452fb52a4"
+  },
+  "guias/homologacao.mdx": {
+    "mtime": 1783954542.5367086,
+    "ast_hash": "e99bcd6d3b08c5fbfa2d4f3bba140154",
+    "semantic_hash": "e99bcd6d3b08c5fbfa2d4f3bba140154"
+  },
+  "guias/ides-ia.mdx": {
+    "mtime": 1783954542.5370288,
+    "ast_hash": "550281304b3044e9f8ea87812e033f58",
+    "semantic_hash": "550281304b3044e9f8ea87812e033f58"
+  },
+  "guias/producao.mdx": {
+    "mtime": 1783954542.5372958,
+    "ast_hash": "58b2591eb0fb4ddb0db20d8f04f71b4b",
+    "semantic_hash": "58b2591eb0fb4ddb0db20d8f04f71b4b"
+  },
+  "index.mdx": {
+    "mtime": 1783954542.5375504,
+    "ast_hash": "9ea6ecd133887ed7f04bf4b9028daad3",
+    "semantic_hash": "9ea6ecd133887ed7f04bf4b9028daad3"
+  },
+  "introducao/ecossistema.mdx": {
+    "mtime": 1783943825.8582218,
+    "ast_hash": "ecea0f1af93bc72e00de0201e316cbe2",
+    "semantic_hash": "ecea0f1af93bc72e00de0201e316cbe2"
+  },
+  "introducao/quickstart.mdx": {
+    "mtime": 1783954542.5378306,
+    "ast_hash": "e1cfee8fcb7f8c1065daecb469063c59",
+    "semantic_hash": "e1cfee8fcb7f8c1065daecb469063c59"
+  },
+  "platform/acesso-packages.mdx": {
+    "mtime": 1783943825.859191,
+    "ast_hash": "1c612e3609e19e9de691095f0f0801fd",
+    "semantic_hash": "1c612e3609e19e9de691095f0f0801fd"
+  },
+  "platform/licencas.mdx": {
+    "mtime": 1783943825.8593395,
+    "ast_hash": "d0f42429c025e268b403757e10d18cef",
+    "semantic_hash": "d0f42429c025e268b403757e10d18cef"
+  },
+  "platform/organizacoes.mdx": {
+    "mtime": 1783943825.8594742,
+    "ast_hash": "e9a29918119bfb70e88c734bb11e43f2",
+    "semantic_hash": "e9a29918119bfb70e88c734bb11e43f2"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs.md": {
+    "mtime": 1783943825.8599312,
+    "ast_hash": "ab25b39c3e63d8cc19b5c69c59935f0b",
+    "semantic_hash": "ab25b39c3e63d8cc19b5c69c59935f0b"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/actions.md": {
+    "mtime": 1783943825.8600836,
+    "ast_hash": "b5adb31ff61c099a7828c5f5ba34fe31",
+    "semantic_hash": "b5adb31ff61c099a7828c5f5ba34fe31"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/activity-20b38020.md": {
+    "mtime": 1783943825.8602002,
+    "ast_hash": "a8b9d101de94671e44551b005c6761cb",
+    "semantic_hash": "a8b9d101de94671e44551b005c6761cb"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/activity-a42dcc0c.md": {
+    "mtime": 1783943825.8602853,
+    "ast_hash": "68112ee20dfc97cb0704d0c23c8e1456",
+    "semantic_hash": "68112ee20dfc97cb0704d0c23c8e1456"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/activity-bb917a90.md": {
+    "mtime": 1783943825.860367,
+    "ast_hash": "f354c574c6215fc42ebe189cddb7a393",
+    "semantic_hash": "f354c574c6215fc42ebe189cddb7a393"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/activity.md": {
+    "mtime": 1783943825.8604512,
+    "ast_hash": "fc9c0878950a5fea170c8287e7d455e2",
+    "semantic_hash": "fc9c0878950a5fea170c8287e7d455e2"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/.mintignore.md": {
+    "mtime": 1783943825.861448,
+    "ast_hash": "e535f2e3972062f4c38fb6bc8d8afd6c",
+    "semantic_hash": "e535f2e3972062f4c38fb6bc8d8afd6c"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/AGENTS.md.md": {
+    "mtime": 1783943825.861568,
+    "ast_hash": "5d573a2fdcc1f8eb3d6cc2309e36b5bd",
+    "semantic_hash": "5d573a2fdcc1f8eb3d6cc2309e36b5bd"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/LICENSE.md": {
+    "mtime": 1783943825.861662,
+    "ast_hash": "861a1720792c8eb481423b838b8a474d",
+    "semantic_hash": "861a1720792c8eb481423b838b8a474d"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/README.md.md": {
+    "mtime": 1783943825.8619156,
+    "ast_hash": "a98bba4eba39a0f2e0e7f8547dc52084",
+    "semantic_hash": "a98bba4eba39a0f2e0e7f8547dc52084"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/index.mdx.md": {
+    "mtime": 1783943825.8621368,
+    "ast_hash": "8e1749aa9a309cc7706bb60d9740bc2d",
+    "semantic_hash": "8e1749aa9a309cc7706bb60d9740bc2d"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/logo.md": {
+    "mtime": 1783943825.8626924,
+    "ast_hash": "8995d98187ef50dd7c021e448470883d",
+    "semantic_hash": "8995d98187ef50dd7c021e448470883d"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/quickstart.mdx.md": {
+    "mtime": 1783943825.8630064,
+    "ast_hash": "dd2356e9c1bcd8c7ec2216775d4fa90c",
+    "semantic_hash": "dd2356e9c1bcd8c7ec2216775d4fa90c"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/main/.mintignore.md": {
+    "mtime": 1783943825.863672,
+    "ast_hash": "41e87822156d0bd2fc7a0364870d90bc",
+    "semantic_hash": "41e87822156d0bd2fc7a0364870d90bc"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/main/AGENTS.md.md": {
+    "mtime": 1783943825.863767,
+    "ast_hash": "5f92d3a450466ddb346d90579fd13f32",
+    "semantic_hash": "5f92d3a450466ddb346d90579fd13f32"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/main/LICENSE.md": {
+    "mtime": 1783943825.8638752,
+    "ast_hash": "94568a8d9b37a83186a768ae98b92bdf",
+    "semantic_hash": "94568a8d9b37a83186a768ae98b92bdf"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/main/README.md.md": {
+    "mtime": 1783943825.8639636,
+    "ast_hash": "e94dad759a6e46ddce76c335d28dac36",
+    "semantic_hash": "e94dad759a6e46ddce76c335d28dac36"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/main/index.mdx.md": {
+    "mtime": 1783943825.8640401,
+    "ast_hash": "66ba95e75c785d4cd57059e618012a58",
+    "semantic_hash": "66ba95e75c785d4cd57059e618012a58"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/blob/main/quickstart.mdx.md": {
+    "mtime": 1783943825.8642476,
+    "ast_hash": "0a1e23e7aa899faa88f9675d0b6a7cf9",
+    "semantic_hash": "0a1e23e7aa899faa88f9675d0b6a7cf9"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/branches.md": {
+    "mtime": 1783943825.864428,
+    "ast_hash": "fe48fff94eb77d328278f69e4426e950",
+    "semantic_hash": "fe48fff94eb77d328278f69e4426e950"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/branches/active.md": {
+    "mtime": 1783943825.8645875,
+    "ast_hash": "054072d1172d2e12e9da5bf7084667c3",
+    "semantic_hash": "054072d1172d2e12e9da5bf7084667c3"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/branches/all.md": {
+    "mtime": 1783943825.8646798,
+    "ast_hash": "9b2b0d9dad433083db434dd2babd7e5c",
+    "semantic_hash": "9b2b0d9dad433083db434dd2babd7e5c"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/branches/stale.md": {
+    "mtime": 1783943825.864764,
+    "ast_hash": "1d9f6185de9e7bc293428cbf694b6730",
+    "semantic_hash": "1d9f6185de9e7bc293428cbf694b6730"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commit/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef.md": {
+    "mtime": 1783943825.8649204,
+    "ast_hash": "dfdc688d0fe60d21852114c3a5adfe1c",
+    "semantic_hash": "dfdc688d0fe60d21852114c3a5adfe1c"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits-a3a69181.md": {
+    "mtime": 1783943825.8650517,
+    "ast_hash": "1ecfbd990adfd1b49b5c6a4f6d6d2a83",
+    "semantic_hash": "1ecfbd990adfd1b49b5c6a4f6d6d2a83"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits.md": {
+    "mtime": 1783943825.8651521,
+    "ast_hash": "c8f238d0c17a3dfe55a6e9b4cb54c607",
+    "semantic_hash": "c8f238d0c17a3dfe55a6e9b4cb54c607"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef.md": {
+    "mtime": 1783943825.8652978,
+    "ast_hash": "6d4ee3e31f100be3bb08d7f16dd52ed9",
+    "semantic_hash": "6d4ee3e31f100be3bb08d7f16dd52ed9"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/.mintignore.md": {
+    "mtime": 1783943825.8654263,
+    "ast_hash": "8f62ac98c36567e8b289793c667d57b0",
+    "semantic_hash": "8f62ac98c36567e8b289793c667d57b0"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/AGENTS.md.md": {
+    "mtime": 1783943825.8655005,
+    "ast_hash": "3cf37239ace0d217a471d03f0fb91bb0",
+    "semantic_hash": "3cf37239ace0d217a471d03f0fb91bb0"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/LICENSE.md": {
+    "mtime": 1783943825.8655887,
+    "ast_hash": "11a455fc5a641816b738a66716cf7df3",
+    "semantic_hash": "11a455fc5a641816b738a66716cf7df3"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/README.md.md": {
+    "mtime": 1783943825.8656697,
+    "ast_hash": "83874921f3b4d3e7b410e6710cae0db3",
+    "semantic_hash": "83874921f3b4d3e7b410e6710cae0db3"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/index.mdx.md": {
+    "mtime": 1783943825.8657537,
+    "ast_hash": "0f110da50e1ef0968e542f73c41e391b",
+    "semantic_hash": "0f110da50e1ef0968e542f73c41e391b"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/logo.md": {
+    "mtime": 1783943825.8658326,
+    "ast_hash": "818ab05ffacd9ba47cd69f61a2679c18",
+    "semantic_hash": "818ab05ffacd9ba47cd69f61a2679c18"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/quickstart.mdx.md": {
+    "mtime": 1783943825.865911,
+    "ast_hash": "f13d9816ae279f05e480b805e993737a",
+    "semantic_hash": "f13d9816ae279f05e480b805e993737a"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/main.md": {
+    "mtime": 1783943825.8659925,
+    "ast_hash": "f8b436894fc12db0bcab78511ddbcecc",
+    "semantic_hash": "f8b436894fc12db0bcab78511ddbcecc"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/main/.mintignore.md": {
+    "mtime": 1783943825.8661335,
+    "ast_hash": "405bd9db1a99a364985a5a4acb3a2037",
+    "semantic_hash": "405bd9db1a99a364985a5a4acb3a2037"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/main/AGENTS.md.md": {
+    "mtime": 1783943825.866235,
+    "ast_hash": "a465372c8f98d5077236e1e079095c74",
+    "semantic_hash": "a465372c8f98d5077236e1e079095c74"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/main/LICENSE.md": {
+    "mtime": 1783943825.8663125,
+    "ast_hash": "569112382be8a1f30cccb6c334243c1b",
+    "semantic_hash": "569112382be8a1f30cccb6c334243c1b"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/main/README.md.md": {
+    "mtime": 1783943825.8663898,
+    "ast_hash": "8884d976b2efdf20495f002b1a61c357",
+    "semantic_hash": "8884d976b2efdf20495f002b1a61c357"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/main/index.mdx.md": {
+    "mtime": 1783943825.86692,
+    "ast_hash": "3a87be0a476644abcc3d80d3b51eabed",
+    "semantic_hash": "3a87be0a476644abcc3d80d3b51eabed"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/main/logo.md": {
+    "mtime": 1783943825.867149,
+    "ast_hash": "d42a3f5ee14d37afa4f936a2af0863d4",
+    "semantic_hash": "d42a3f5ee14d37afa4f936a2af0863d4"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/commits/main/quickstart.mdx.md": {
+    "mtime": 1783943825.867377,
+    "ast_hash": "240563d375beba8cc7a9c3b22f354490",
+    "semantic_hash": "240563d375beba8cc7a9c3b22f354490"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/community.md": {
+    "mtime": 1783943825.86754,
+    "ast_hash": "42cd2703c3346370bfb8feb630f81e7b",
+    "semantic_hash": "42cd2703c3346370bfb8feb630f81e7b"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/compare.md": {
+    "mtime": 1783943825.8685267,
+    "ast_hash": "7763fa6053fe540d6e3fed3d81b789af",
+    "semantic_hash": "7763fa6053fe540d6e3fed3d81b789af"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/compare/main%40%7B1day%7D...main.md": {
+    "mtime": 1783943825.8687735,
+    "ast_hash": "013f27b9a924f4dddc2dd959d8e14095",
+    "semantic_hash": "013f27b9a924f4dddc2dd959d8e14095"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/compare/usesuot:2d0ed06...usesuot:2d0ed06.md": {
+    "mtime": 1783943825.869155,
+    "ast_hash": "e408aaf9fad12fa146566520d3ffe332",
+    "semantic_hash": "e408aaf9fad12fa146566520d3ffe332"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/custom-properties.md": {
+    "mtime": 1783943825.8693032,
+    "ast_hash": "c9000549778cfd6ebe52e9e4cde721cb",
+    "semantic_hash": "c9000549778cfd6ebe52e9e4cde721cb"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/forks.md": {
+    "mtime": 1783943825.8694649,
+    "ast_hash": "f87968ed10eb7222971992c9338d8627",
+    "semantic_hash": "f87968ed10eb7222971992c9338d8627"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/graphs/code-frequency.md": {
+    "mtime": 1783943825.8696299,
+    "ast_hash": "96ef04404ab90732eeaced0ed2a0f0d7",
+    "semantic_hash": "96ef04404ab90732eeaced0ed2a0f0d7"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/graphs/commit-activity.md": {
+    "mtime": 1783943825.8697276,
+    "ast_hash": "5bab61f4af1fbd07135755938da2c79d",
+    "semantic_hash": "5bab61f4af1fbd07135755938da2c79d"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/graphs/contributors.md": {
+    "mtime": 1783943825.86984,
+    "ast_hash": "45d350e33bca4724af4765d3da4986d8",
+    "semantic_hash": "45d350e33bca4724af4765d3da4986d8"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-19aafadf.md": {
+    "mtime": 1783943825.8699365,
+    "ast_hash": "fb4d24f93c9a7dd695c7a7c7c32da246",
+    "semantic_hash": "fb4d24f93c9a7dd695c7a7c7c32da246"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-19c3c9f2.md": {
+    "mtime": 1783943825.8700454,
+    "ast_hash": "304b70c03b661673d3468a3e10aeb23a",
+    "semantic_hash": "304b70c03b661673d3468a3e10aeb23a"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-1e92d817.md": {
+    "mtime": 1783943825.8702092,
+    "ast_hash": "45928821ce279e6487dc3b13098a2e21",
+    "semantic_hash": "45928821ce279e6487dc3b13098a2e21"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-2c469ec8.md": {
+    "mtime": 1783943825.8703089,
+    "ast_hash": "7f22b52f2576dcdb37b557e2b3a0940e",
+    "semantic_hash": "7f22b52f2576dcdb37b557e2b3a0940e"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-2dc4d55d.md": {
+    "mtime": 1783943825.8704197,
+    "ast_hash": "d50d20ce8cc06e542d8ce965479481e0",
+    "semantic_hash": "d50d20ce8cc06e542d8ce965479481e0"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-4ad5678c.md": {
+    "mtime": 1783943825.8705368,
+    "ast_hash": "f4419aee5cd67a212ddefc28b82263d5",
+    "semantic_hash": "f4419aee5cd67a212ddefc28b82263d5"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-4af433b2.md": {
+    "mtime": 1783943825.8706276,
+    "ast_hash": "707842935a63745107e4f5efdb93ed0d",
+    "semantic_hash": "707842935a63745107e4f5efdb93ed0d"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-4c3e4dc9.md": {
+    "mtime": 1783943825.8707256,
+    "ast_hash": "7818d53a83d51178a3adacbca16ab75a",
+    "semantic_hash": "7818d53a83d51178a3adacbca16ab75a"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-4ee581f3.md": {
+    "mtime": 1783943825.8708239,
+    "ast_hash": "84feaba9f7f21926611810f7e109c9e3",
+    "semantic_hash": "84feaba9f7f21926611810f7e109c9e3"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-50fc56c5.md": {
+    "mtime": 1783943825.8709075,
+    "ast_hash": "24319c795358cf24fded327982ae6594",
+    "semantic_hash": "24319c795358cf24fded327982ae6594"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-55fc7a69.md": {
+    "mtime": 1783943825.8710785,
+    "ast_hash": "8df3e1dbac64f150b54d2da31fd3f467",
+    "semantic_hash": "8df3e1dbac64f150b54d2da31fd3f467"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-5d3ede3d.md": {
+    "mtime": 1783943825.8711624,
+    "ast_hash": "0d0e6d61213c38ee7a3a2cde10d80981",
+    "semantic_hash": "0d0e6d61213c38ee7a3a2cde10d80981"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-879200a9.md": {
+    "mtime": 1783943825.8712482,
+    "ast_hash": "0161849da2b759b91793d3b38b87562a",
+    "semantic_hash": "0161849da2b759b91793d3b38b87562a"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-88e0379c.md": {
+    "mtime": 1783943825.8713336,
+    "ast_hash": "6761a74f7cae6240a0f2e1a70294c4f5",
+    "semantic_hash": "6761a74f7cae6240a0f2e1a70294c4f5"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-8ef37d26.md": {
+    "mtime": 1783943825.871417,
+    "ast_hash": "30c3656ed6d9226a403377861815d70a",
+    "semantic_hash": "30c3656ed6d9226a403377861815d70a"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-8f214d63.md": {
+    "mtime": 1783943825.8715122,
+    "ast_hash": "d21ac5d98ec9b2d6483f3029d110fd83",
+    "semantic_hash": "d21ac5d98ec9b2d6483f3029d110fd83"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-9670d806.md": {
+    "mtime": 1783943825.8716192,
+    "ast_hash": "41df7a1216177711e84d682f05e0bddf",
+    "semantic_hash": "41df7a1216177711e84d682f05e0bddf"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-97ff1f4c.md": {
+    "mtime": 1783943825.8717306,
+    "ast_hash": "28527e514e8f5b5b9dd5fd22674a932d",
+    "semantic_hash": "28527e514e8f5b5b9dd5fd22674a932d"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-99604c15.md": {
+    "mtime": 1783943825.8732393,
+    "ast_hash": "ecbb8fcf2354425db53a541943138cbe",
+    "semantic_hash": "ecbb8fcf2354425db53a541943138cbe"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-9b6814be.md": {
+    "mtime": 1783943825.8733733,
+    "ast_hash": "683d95f5058193773fc17c4c0e13292a",
+    "semantic_hash": "683d95f5058193773fc17c4c0e13292a"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-9dccfcc5.md": {
+    "mtime": 1783943825.8736644,
+    "ast_hash": "3be54bf33c3fd18a501a936682cd4467",
+    "semantic_hash": "3be54bf33c3fd18a501a936682cd4467"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-a6ddf44d.md": {
+    "mtime": 1783943825.8743355,
+    "ast_hash": "18eb2e2d2d78d52e6689684c98c5e36c",
+    "semantic_hash": "18eb2e2d2d78d52e6689684c98c5e36c"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-bac9a1d5.md": {
+    "mtime": 1783943825.8746545,
+    "ast_hash": "fad079ee8a810f3763712eb2a3c41f6f",
+    "semantic_hash": "fad079ee8a810f3763712eb2a3c41f6f"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-bcc7d91a.md": {
+    "mtime": 1783943825.874991,
+    "ast_hash": "cb0c18481407934cd2dd62ab6ea4535e",
+    "semantic_hash": "cb0c18481407934cd2dd62ab6ea4535e"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-c72c3ace.md": {
+    "mtime": 1783943825.875135,
+    "ast_hash": "fdf5cdb14b5cb4726b58cbfe40d68fd5",
+    "semantic_hash": "fdf5cdb14b5cb4726b58cbfe40d68fd5"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-c9e46e15.md": {
+    "mtime": 1783943825.8752565,
+    "ast_hash": "4a069372f0ad12f990fbcfec5cd3cae1",
+    "semantic_hash": "4a069372f0ad12f990fbcfec5cd3cae1"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-cb07d249.md": {
+    "mtime": 1783943825.8753572,
+    "ast_hash": "cd17e1edd9106b94801ea69a0e717794",
+    "semantic_hash": "cd17e1edd9106b94801ea69a0e717794"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-cb616238.md": {
+    "mtime": 1783943825.8754468,
+    "ast_hash": "e940446d354b609229d1b79dd1695ef6",
+    "semantic_hash": "e940446d354b609229d1b79dd1695ef6"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-cda0a961.md": {
+    "mtime": 1783943825.8755407,
+    "ast_hash": "0ca2e3a3bae8809f57a1be9eb2ffbd90",
+    "semantic_hash": "0ca2e3a3bae8809f57a1be9eb2ffbd90"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-dbff65f5.md": {
+    "mtime": 1783943825.875635,
+    "ast_hash": "fa19f4fd0f72896182a7d6dcb0053cbb",
+    "semantic_hash": "fa19f4fd0f72896182a7d6dcb0053cbb"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-ed048140.md": {
+    "mtime": 1783943825.875727,
+    "ast_hash": "f0d4479efbaad618d75ba538a8104f47",
+    "semantic_hash": "f0d4479efbaad618d75ba538a8104f47"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-eff4830b.md": {
+    "mtime": 1783943825.875809,
+    "ast_hash": "dd4b6a5a0c4d0f4bc4c6a0a33d2c6be2",
+    "semantic_hash": "dd4b6a5a0c4d0f4bc4c6a0a33d2c6be2"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-f26396d3.md": {
+    "mtime": 1783943825.8758795,
+    "ast_hash": "4a7a20ccc432d146812bc35d7f336c09",
+    "semantic_hash": "4a7a20ccc432d146812bc35d7f336c09"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-f4d5b9b4.md": {
+    "mtime": 1783943825.8759727,
+    "ast_hash": "2c09da7b1a53285eac7833cc19bcb417",
+    "semantic_hash": "2c09da7b1a53285eac7833cc19bcb417"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues-fbd72e8f.md": {
+    "mtime": 1783943825.8760757,
+    "ast_hash": "3ca2422b4f3d1f3f2dbed1b232d2ce6e",
+    "semantic_hash": "3ca2422b4f3d1f3f2dbed1b232d2ce6e"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues.md": {
+    "mtime": 1783943825.876183,
+    "ast_hash": "027ea6a2239bd3afad2103cc981e3146",
+    "semantic_hash": "027ea6a2239bd3afad2103cc981e3146"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/issues/views.md": {
+    "mtime": 1783943825.876342,
+    "ast_hash": "b8221697835a136ff64bec27dfbd65d4",
+    "semantic_hash": "b8221697835a136ff64bec27dfbd65d4"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/labels.md": {
+    "mtime": 1783943825.8764193,
+    "ast_hash": "9830341ea7b29d5224eee6dcd167d142",
+    "semantic_hash": "9830341ea7b29d5224eee6dcd167d142"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/milestones-3cfe8795.md": {
+    "mtime": 1783943825.8765035,
+    "ast_hash": "cfb88a2a7d257cd0b6a6068b6a82772b",
+    "semantic_hash": "cfb88a2a7d257cd0b6a6068b6a82772b"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/milestones.md": {
+    "mtime": 1783943825.876717,
+    "ast_hash": "4697f84c52b5e894e3e90ea9671775d8",
+    "semantic_hash": "4697f84c52b5e894e3e90ea9671775d8"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/network.md": {
+    "mtime": 1783943825.8768976,
+    "ast_hash": "8425518d5475124489509d83084d079f",
+    "semantic_hash": "8425518d5475124489509d83084d079f"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/network/dependencies.md": {
+    "mtime": 1783943825.877084,
+    "ast_hash": "c83164855c6eb771da9ae64d9bc56e1a",
+    "semantic_hash": "c83164855c6eb771da9ae64d9bc56e1a"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/network/dependents-9b6f9c84.md": {
+    "mtime": 1783943825.8771813,
+    "ast_hash": "93cd89bb2f90e888b2e091123b713141",
+    "semantic_hash": "93cd89bb2f90e888b2e091123b713141"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/network/dependents-d76e64eb.md": {
+    "mtime": 1783943825.8780699,
+    "ast_hash": "28f7fd0d96606b9d10daac3cb8329581",
+    "semantic_hash": "28f7fd0d96606b9d10daac3cb8329581"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/network/dependents.md": {
+    "mtime": 1783943825.8781796,
+    "ast_hash": "1ef02cb6877c67a0a0735a4e44d07d3f",
+    "semantic_hash": "1ef02cb6877c67a0a0735a4e44d07d3f"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/network/members.md": {
+    "mtime": 1783943825.8786073,
+    "ast_hash": "c062dc6efef595131993bb0567b0b60d",
+    "semantic_hash": "c062dc6efef595131993bb0567b0b60d"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/projects.md": {
+    "mtime": 1783943825.8787653,
+    "ast_hash": "6f66f668150c4b3a83d68edd82903073",
+    "semantic_hash": "6f66f668150c4b3a83d68edd82903073"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/pulls-5bcfb7f4.md": {
+    "mtime": 1783943825.878941,
+    "ast_hash": "a96a559cf4a9dcc442c60685c7ef38c6",
+    "semantic_hash": "a96a559cf4a9dcc442c60685c7ef38c6"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/pulls-6d8c2d41.md": {
+    "mtime": 1783943825.8790677,
+    "ast_hash": "cac9017065c0e43b554964f09edf15b4",
+    "semantic_hash": "cac9017065c0e43b554964f09edf15b4"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/pulls-ac238023.md": {
+    "mtime": 1783943825.8791604,
+    "ast_hash": "59cd35285143dfa4983f8f220dcaf7e8",
+    "semantic_hash": "59cd35285143dfa4983f8f220dcaf7e8"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/pulls.md": {
+    "mtime": 1783943825.879279,
+    "ast_hash": "443706b1755f024e5392fbff10d2685b",
+    "semantic_hash": "443706b1755f024e5392fbff10d2685b"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/pulse.md": {
+    "mtime": 1783943825.8793714,
+    "ast_hash": "276bb6b0836d58bc3652c0e03976c2ae",
+    "semantic_hash": "276bb6b0836d58bc3652c0e03976c2ae"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/raw/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/.mintignore.md": {
+    "mtime": 1783943825.8797026,
+    "ast_hash": "4182508b87a5f63e222739d732cc69fb",
+    "semantic_hash": "4182508b87a5f63e222739d732cc69fb"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/raw/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/AGENTS.md.md": {
+    "mtime": 1783943825.8798063,
+    "ast_hash": "06927c90624b52f0370d9e329727f350",
+    "semantic_hash": "06927c90624b52f0370d9e329727f350"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/raw/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/LICENSE.md": {
+    "mtime": 1783943825.8799055,
+    "ast_hash": "2ac78b38040f031b4e20c4b17d8ab455",
+    "semantic_hash": "2ac78b38040f031b4e20c4b17d8ab455"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/raw/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/README.md.md": {
+    "mtime": 1783943825.8800483,
+    "ast_hash": "3f89e94eaa2b3f14131bb67edc72d0ea",
+    "semantic_hash": "3f89e94eaa2b3f14131bb67edc72d0ea"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/raw/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/index.mdx.md": {
+    "mtime": 1783943825.8801758,
+    "ast_hash": "28909ce937d1b1813e1aa7669e2c5782",
+    "semantic_hash": "28909ce937d1b1813e1aa7669e2c5782"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/raw/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/quickstart.mdx.md": {
+    "mtime": 1783943825.8802595,
+    "ast_hash": "b425b4b406c5bf9e384896f0cda39271",
+    "semantic_hash": "b425b4b406c5bf9e384896f0cda39271"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/raw/refs/heads/main/.mintignore.md": {
+    "mtime": 1783943825.8804784,
+    "ast_hash": "629ab18d201b3c934c2ace8ee3dac295",
+    "semantic_hash": "629ab18d201b3c934c2ace8ee3dac295"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/raw/refs/heads/main/AGENTS.md.md": {
+    "mtime": 1783943825.88055,
+    "ast_hash": "331a588a247577060aa377e0ddc1016d",
+    "semantic_hash": "331a588a247577060aa377e0ddc1016d"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/raw/refs/heads/main/LICENSE.md": {
+    "mtime": 1783943825.8806202,
+    "ast_hash": "557c55a90e36f01f75fbb64df5ba6241",
+    "semantic_hash": "557c55a90e36f01f75fbb64df5ba6241"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/raw/refs/heads/main/README.md.md": {
+    "mtime": 1783943825.8806996,
+    "ast_hash": "4507b088708a08eddb3e9f69cfdf1559",
+    "semantic_hash": "4507b088708a08eddb3e9f69cfdf1559"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/raw/refs/heads/main/index.mdx.md": {
+    "mtime": 1783943825.8807747,
+    "ast_hash": "ee2f5ffe372d0d50da58a119464cce6f",
+    "semantic_hash": "ee2f5ffe372d0d50da58a119464cce6f"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/raw/refs/heads/main/quickstart.mdx.md": {
+    "mtime": 1783943825.8808534,
+    "ast_hash": "99213db152c9531395192bf66810a4d8",
+    "semantic_hash": "99213db152c9531395192bf66810a4d8"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/releases.md": {
+    "mtime": 1783943825.8809497,
+    "ast_hash": "bb99009fc12d7dc32f23e26b424b4649",
+    "semantic_hash": "bb99009fc12d7dc32f23e26b424b4649"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/search-22c46c5b.md": {
+    "mtime": 1783943825.8810508,
+    "ast_hash": "33110c7c15534393a847ac05e2ff465f",
+    "semantic_hash": "33110c7c15534393a847ac05e2ff465f"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/security.md": {
+    "mtime": 1783943825.8811283,
+    "ast_hash": "21fdd6c9b1a93abfc9bb4bb350389457",
+    "semantic_hash": "21fdd6c9b1a93abfc9bb4bb350389457"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/tags.md": {
+    "mtime": 1783943825.8812065,
+    "ast_hash": "de5a377a89bb0d8bb88ac25ce013fe93",
+    "semantic_hash": "de5a377a89bb0d8bb88ac25ce013fe93"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/tree/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef.md": {
+    "mtime": 1783943825.8813617,
+    "ast_hash": "85c8b8a2fbe551ed1f65ea26fb980eae",
+    "semantic_hash": "85c8b8a2fbe551ed1f65ea26fb980eae"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/tree/2d0ed063aeb0e1ad614ab0241fcef7482a6161ef/logo.md": {
+    "mtime": 1783943825.8815007,
+    "ast_hash": "7fffea901e6018bf1aaeb3c54e159784",
+    "semantic_hash": "7fffea901e6018bf1aaeb3c54e159784"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/tree/main.md": {
+    "mtime": 1783943825.8816097,
+    "ast_hash": "2947a313f022ad85a5ef55aed0707b36",
+    "semantic_hash": "2947a313f022ad85a5ef55aed0707b36"
+  },
+  "sources/docs-1/github.com/usesuot/developer-docs/tree/main/logo.md": {
+    "mtime": 1783943825.8817606,
+    "ast_hash": "bde8c1e37d99dfb9a6c527d8193717b9",
+    "semantic_hash": "bde8c1e37d99dfb9a6c527d8193717b9"
+  },
+  "suporte/atualizacoes.mdx": {
+    "mtime": 1783943825.8820143,
+    "ast_hash": "3d009efaad673e0b8f85c86b75a518ec",
+    "semantic_hash": "3d009efaad673e0b8f85c86b75a518ec"
+  },
+  "suporte/contato.mdx": {
+    "mtime": 1783943825.8821313,
+    "ast_hash": "cc77ddd5e04f001b92ff7d56c90d8bd4",
+    "semantic_hash": "cc77ddd5e04f001b92ff7d56c90d8bd4"
+  },
+  "suporte/glossario.mdx": {
+    "mtime": 1784051210.1152518,
+    "ast_hash": "cdf819158fd0f8475d72bd6c0d77b276",
+    "semantic_hash": "cdf819158fd0f8475d72bd6c0d77b276"
+  },
+  "logo/dark.png": {
+    "mtime": 1783954465.0598485,
+    "ast_hash": "2bb169e535d19bb2453c5e7b20ba26be",
+    "semantic_hash": "2bb169e535d19bb2453c5e7b20ba26be"
+  },
+  "logo/favicon.png": {
+    "mtime": 1783954465.0601737,
+    "ast_hash": "283cae6a9113617439e288dce60380a5",
+    "semantic_hash": "283cae6a9113617439e288dce60380a5"
+  },
+  "logo/icon.png": {
+    "mtime": 1783954465.0606322,
+    "ast_hash": "079f1676e1bdeca46e62ee59ecf16cbb",
+    "semantic_hash": "079f1676e1bdeca46e62ee59ecf16cbb"
+  },
+  "logo/light.png": {
+    "mtime": 1783954465.0616915,
+    "ast_hash": "3c64458b6c204cefe4ad79c940239c57",
+    "semantic_hash": "3c64458b6c204cefe4ad79c940239c57"
+  }
+}

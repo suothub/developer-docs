@@ -1,0 +1,15 @@
+cache/
+.ast_log.txt
+.build_log.txt
+.graphify_python
+.graphify_root
+.graphify_uncached.txt
+.graphify_ast.json
+.graphify_detect.json
+.graphify_extract.json
+.graphify_semantic.json
+.graphify_analysis.json
+.graphify_cached.json
+.graphify_semantic_new.json
+.graphify_chunk_*.json
+.chunk_*_files.txt
